@@ -1,1 +1,4 @@
-application = angular.module('TodoList', [])
+##
+##  Create Application
+##
+@application = angular.module('TodoList', [])
