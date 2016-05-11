@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+html lang==ENV['DEFAULT_LOCALE']
+	head
+		meta charset="UTF-8"/
+		meta name="viewport" content="width=device-width, initial-scale=1"
+
+		title == @title || ENV['APP_NAME']
+
+		= stylesheet_link_tag    'application', media: 'all'
+		= csrf_meta_tags
+	body
+		== render 'partials/layouts/nav'
+
+		== yield
+
+		== render 'partials/layouts/nav'
+
+		= javascript_include_tag 'application'
