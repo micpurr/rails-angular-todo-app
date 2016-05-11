@@ -19,6 +19,8 @@ source 'https://rubygems.org'
 	gem 'uglifier', '>= 1.3.0'
 	# => Use CoffeeScript for .coffee assets and views
 	gem 'coffee-rails', '~> 4.1.0'
+	# => AngularJS Wrapper for rails
+	gem 'angularjs-rails'
 	# => Use jquery as the JavaScript library
 	gem 'jquery-rails'
 	# => Autiprefix for CSS
@@ -32,7 +34,7 @@ source 'https://rubygems.org'
 
 ############ => MODEL
 	# => Use cocoon gem for work with nested data
-	gem 'cocoon'
+	# gem 'cocoon'
 	# => Use russian gem for translate DateTime and some base translations
 	# gem 'russian'
 	# => Gem For preprocess Images
@@ -51,6 +53,10 @@ source 'https://rubygems.org'
 	gem 'bcrypt', '~> 3.1.7'
 	# => use Devise engine for User Authentication
 	gem 'devise'
+	# => AngularJS and Devise coop
+	source "https://rails-assets.org" do
+		gem "rails-assets-angular-devise"
+	end
 ############
 
 ############ => SERVER
