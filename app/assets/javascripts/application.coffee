@@ -6,7 +6,7 @@
 //= require angular-route
 
 ##
-##  Angular include
+##  Angular includes
 ##
 //= require angular-devise
 
