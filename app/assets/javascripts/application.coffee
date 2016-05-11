@@ -11,6 +11,16 @@
 //= require angular-devise
 
 ##
+##  Configs
+##
+//= require configs/TodoList
+
+##
+##  Controllers
+##
+//= require controllers/application_controller
+
+##
 ##  Other libs
 ##
 //= require jquery

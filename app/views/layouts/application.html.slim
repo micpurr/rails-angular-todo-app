@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-html lang==ENV['DEFAULT_LOCALE']
+html lang==ENV['DEFAULT_LOCALE'] 
 	head
 		meta charset="UTF-8"/
 		meta name="viewport" content="width=device-width, initial-scale=1"
@@ -11,7 +11,8 @@ html lang==ENV['DEFAULT_LOCALE']
 	body
 		== render 'partials/layouts/nav'
 
-		== yield
+		div ng-app="TodoList"
+			== yield
 
 		== render 'partials/layouts/footer'
 
