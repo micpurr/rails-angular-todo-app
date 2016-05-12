@@ -10,10 +10,10 @@ html lang==ENV['DEFAULT_LOCALE']
 		= stylesheet_link_tag    'application', media: 'all'
 		= javascript_include_tag 'application-angular'
 		= csrf_meta_tags
-	body
+	body ng-app="TodoList"
 		== render 'partials/layouts/nav'
 
-		main ng-app="TodoList"
+		main
 			== yield
 
 		== render 'partials/layouts/footer'
