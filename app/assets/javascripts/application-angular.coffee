@@ -4,10 +4,7 @@
 //= require angular
 //= require angular-resource
 //= require angular-route
-
-##
-##  Angular includes
-##
+//= require angular-rails-templates
 //= require angular-devise
 
 ##
@@ -20,3 +17,10 @@
 ##  Controllers
 ##
 //= require controllers/application_controller
+##  Sessions
+//= require controllers/sessions/login_controller
+
+##
+##  HTML(slim) Templates
+##
+//= require_tree ../templates

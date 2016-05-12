@@ -1,9 +1,9 @@
 ##
-##  Application controller (Home#index)
+##  Application controller
 ##
 @application.controller('ApplicationController', 
-	[ '$scope', 
-	( $scope ) ->
+	[ '$scope', 'Auth' 
+	( $scope, Auth ) ->
 
 		
 

@@ -14,8 +14,7 @@ html lang==ENV['DEFAULT_LOCALE']
 		== render 'partials/layouts/nav'
 
 		main ng-app="TodoList"
-			/ == yield
-			div ng-view=''
+			== yield
 
 		== render 'partials/layouts/footer'
 

@@ -20,5 +20,12 @@ module TodoListApp
 		config.time_zone =           ENV['TIME_ZONE']
 		config.i18n.default_locale = ENV['DEFAULT_LOCALE']
 		config.active_record.raise_in_transactional_callbacks = true
+
+		##
+		##  This service requires Devise to respond to JSON
+		##
+		config.to_prepare do
+			DeviseController.respond_to :html, :json
+		end
 	end
 end

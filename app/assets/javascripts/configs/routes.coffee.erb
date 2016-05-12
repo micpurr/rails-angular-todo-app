@@ -9,17 +9,22 @@
 			##
 			##  index page
 			##
-			.when( '/', {
-				templateUrl: 'index',
-				controller:  'ApplicationController'
-				})
+			.when '/',
+				templateUrl: 'home/index.html'
+				controller: 'ApplicationController'
+
+			##
+			##  login page
+			##
+			.when '/login2',
+				templateUrl: 'api/users/login'
+				controller: 'LoginController'
 
 			##
 			##  404 page
 			##
-			.otherwise({
+			.otherwise
 				templateUrl: '404.html'
-				})
 
 		##
 		##  remove anchor
