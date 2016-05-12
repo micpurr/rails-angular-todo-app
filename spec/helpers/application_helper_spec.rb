@@ -1,15 +1,17 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the ApplicationHelper. For example:
-#
-# describe ApplicationHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
+##
+##  Need locale en file and 
+##  en->actions->new translation
+##
 RSpec.describe ApplicationHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+	describe "check correct localize" do
+		it "return correct default capitalize translation (EN locale)" do
+			expect(helper.lc('actions.new')).to eq("New")
+		end
+
+		it "return correct upcase translation (EN locale)" do
+			expect(helper.lc('actions.new', :upcase)).to eq("NEW")
+		end
+	end
 end
