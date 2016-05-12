@@ -1,28 +1,10 @@
 ##
-##  Angular core
-##
-//= require angular
-//= require angular-resource
-//= require angular-route
-
-##
-##  Angular includes
-##
-//= require angular-devise
-
-##
-##  Configs
-##
-//= require configs/TodoList
-
-##
-##  Controllers
-##
-//= require controllers/application_controller
-
-##
-##  Other libs
+##  jQuery
 ##
 //= require jquery
 //= require jquery_ujs
+
+##
+##  Bootstrap libs
+##
 //= require bootstrap-sprockets

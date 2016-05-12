@@ -1,4 +1,4 @@
 ##
 ##  Create Application
 ##
-@application = angular.module('TodoList', [])
+@application = angular.module('TodoList', ['ngRoute'])
