@@ -5,6 +5,11 @@ Rails.application.routes.draw do
 	root "home#index"
 
 	##
+	##  Root angular path
+	##
+	get 'index' => 'home#index_angular'
+
+	##
 	##  Devise routes
 	##
 	devise_for :users

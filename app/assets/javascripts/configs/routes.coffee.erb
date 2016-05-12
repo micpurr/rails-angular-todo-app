@@ -1,0 +1,28 @@
+##
+##  Angular application routes
+##
+@application.config([ 
+	'$routeProvider', '$locationProvider', 
+	($routeProvider, $locationProvider) ->
+
+		$routeProvider
+			##
+			##  index page
+			##
+			.when( '/', {
+				templateUrl: 'index',
+				controller:  'ApplicationController'
+				})
+
+			##
+			##  404 page
+			##
+			.otherwise({
+				templateUrl: '404.html'
+				})
+
+		##
+		##  remove anchor
+		##
+		$locationProvider.html5Mode(true)
+	])
