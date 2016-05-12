@@ -3,16 +3,19 @@ html lang==ENV['DEFAULT_LOCALE']
 	head
 		meta charset="UTF-8"/
 		meta name="viewport" content="width=device-width, initial-scale=1"
+		base href="/"
 
 		title == @title || ENV['APP_NAME']
 
 		= stylesheet_link_tag    'application', media: 'all'
+		= javascript_include_tag 'application-angular'
 		= csrf_meta_tags
 	body
 		== render 'partials/layouts/nav'
 
 		main ng-app="TodoList"
-			== yield
+			/ == yield
+			div ng-view=''
 
 		== render 'partials/layouts/footer'
 
