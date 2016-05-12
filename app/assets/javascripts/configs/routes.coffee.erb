@@ -13,12 +13,34 @@
 				templateUrl: 'home/index.html'
 				controller: 'ApplicationController'
 
+			##################
+			##  Users AUTH  ##
+			##################
+
 			##
 			##  login page
 			##
 			.when '/login',
 				templateUrl: 'sessions/login.html'
 				controller: 'LoginController'
+
+			##
+			##  logout page
+			##
+			# .when '/logout',
+			# 	templateUrl: 'sessions/logout.html'
+			# 	controller: 'LogoutController'
+
+			##
+			##  sign_up page
+			##
+			.when '/sign_up',
+				templateUrl: 'sessions/sign_up.html'
+				controller: 'SignUpController'
+
+			####################
+			##  Other routes  ##
+			####################
 
 			##
 			##  404 page
