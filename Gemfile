@@ -23,6 +23,8 @@ source 'https://rubygems.org'
 	gem 'coffee-rails', '~> 4.1.0'
 	# => AngularJS Wrapper for rails
 	gem 'angularjs-rails'
+	# => Angular templates
+	gem 'angular-rails-templates', '1.0.0'
 	# => Use jquery as the JavaScript library
 	gem 'jquery-rails'
 	# => Autiprefix for CSS
