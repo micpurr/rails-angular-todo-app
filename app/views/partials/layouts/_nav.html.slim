@@ -6,17 +6,23 @@ nav.navbar.navbar-default
 				span.icon-bar
 				span.icon-bar
 				span.icon-bar
-			a.navbar-brand href="#" Simple Todo list
+			a.navbar-brand href="#" == ENV['APP_NAME']
 		#navbar-collapse.collapse.navbar-collapse
 			ul.nav.navbar-nav.navbar-right
-				li.dropdown
-					a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
-						| Profile
-						span.caret
-					ul.dropdown-menu
-						li
-							a href="#"  Show
-						li
-							a href="#"  Edit
-				li
-					a href="#"  Logout
+				- if user_signed_in?
+					li.dropdown
+						a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+							= lc('user.profile')
+							span.caret
+						ul.dropdown-menu
+							li
+								a href="#" == lc('actions.show')
+							li
+								a href="#" == lc('actions.edit')
+					li
+						a href='logout' == lc('user.logout')
+				- else
+					li
+						a href='login' == lc('user.login')
+					li
+						a href='sign_up' == lc('user.sign_up')
