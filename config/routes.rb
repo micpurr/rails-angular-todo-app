@@ -5,13 +5,12 @@ Rails.application.routes.draw do
 	root "application#index"
 
 	##
-	##  Root angular path
-	##
-	get '*path' => 'application#index'
-
-	##
 	##  Devise routes
 	##
 	devise_for :users
 
+	##
+	##  Root angular path
+	##
+	match '*path' => 'application#index', via: [:get, :post]
 end
