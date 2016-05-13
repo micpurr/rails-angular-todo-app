@@ -31,6 +31,7 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
 	config.include Devise::TestHelpers, type: :controller
 	config.include Devise::TestHelpers, type: :view
+	config.include ::Angular::DSL
 	# Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
 	# config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -50,6 +51,8 @@ RSpec.configure do |config|
 	# 		DatabaseCleaner.clean
 	# 	end
 	# end
+
+	# Capybara.current_driver = :webkit
 
 	config.before(:suite) do
 		DatabaseCleaner.strategy = :transaction

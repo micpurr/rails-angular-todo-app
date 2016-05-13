@@ -90,6 +90,8 @@ group :test do
 	gem 'factory_girl_rails'
 	# => DB cleaner on testing
 	gem 'database_cleaner'
+	# gem 'selenium-webdriver', '2.47.1'
+	gem 'capybara-ng'
 end
 
 group :development do
