@@ -4,14 +4,17 @@ en:
     new: "new"
     show: 'show'
     delete: "delete"
-  user:
-    profile: "profile"
-    login: "login"
-    logout: "logout"
-    sign_up: "sign up"
+    submit: "submit"
+    cansel: "cansel"
+    user:
+      profile: "profile"
+      login: "login"
+      logout: "logout"
+      sign_up: "sign up"
   activerecord:
     models:
-      model_name: "model_name"
+      user: "user"
     attributes:
-      model_name:
-        attr_name: "attr_name"
+      user:
+        email: "email"
+        password: "password"
