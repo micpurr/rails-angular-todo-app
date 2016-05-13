@@ -3,6 +3,7 @@
 ##
 //= require angular
 //= require angular-resource
+//= require angular-cookies
 //= require angular-route
 //= require angular-rails-templates
 //= require angular-devise
@@ -19,6 +20,7 @@
 //= require controllers/application_controller
 ##  Sessions
 //= require controllers/sessions/login_controller
+//= require controllers/sessions/logout_controller
 
 ##
 ##  HTML(slim) Templates
