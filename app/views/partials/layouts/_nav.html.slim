@@ -9,20 +9,18 @@ nav.navbar.navbar-default
 			= link_to ENV['APP_NAME'], '/', class: 'navbar-brand'
 		#navbar-collapse.collapse.navbar-collapse
 			ul.nav.navbar-nav.navbar-right
-				- if user_signed_in?
-					li.dropdown
-						a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
-							= lc('user.profile')
-							span.caret
-						ul.dropdown-menu
-							li
-								= link_to lc('actions.show'), 'show'
-							li
-								= link_to lc('actions.edit'), 'edit'
-					li
-						= link_to lc('user.logout'), 'logout'
-				- else
-					li
-						= link_to lc('user.login'), 'login'
-					li
-						= link_to lc('user.sign_up'), 'sign_up'
+				li.dropdown ng-hide="globals.user === undefined"
+					a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
+						| {{globals.user.email}}
+						span.caret
+					ul.dropdown-menu
+						li
+							= link_to lc('actions.show'), 'show'
+						li
+							= link_to lc('actions.edit'), 'edit'
+				li ng-controller='LogoutController' ng-hide="globals.user === undefined"
+					= link_to lc('actions.user.logout'), '', 'ng-click': 'logout()'
+				li ng-show="globals.user === undefined"
+					= link_to lc('actions.user.login'), 'login'
+				li ng-show="globals.user === undefined"
+					= link_to lc('actions.user.sign_up'), 'sign_up'
