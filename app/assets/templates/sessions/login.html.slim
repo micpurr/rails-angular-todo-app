@@ -1,1 +1,17 @@
-h1 login page
+.container
+	.well class==form_size({lg:6, md:6, sm:8})
+		h1.text-center ==lc('actions.user.login')
+
+		form ng-submit="login()"
+
+			.form-group
+				label for="email" ==lc("activerecord.attributes.user.email")
+				input#email.form-control placeholder==lc("activerecord.attributes.user.email") type="email"/
+
+			.form-group
+				label for="password" ==lc("activerecord.attributes.user.password")
+				input#password.form-control placeholder==lc("activerecord.attributes.user.password") type="password" /
+
+			.btn-group.pull-right role="group"
+				a.btn.btn-default href="/" ==lc('actions.cansel')
+				button.btn.btn-primary type="submit" ==lc('actions.submit')
