@@ -3,14 +3,13 @@
 		h1.text-center ==lc('actions.user.login')
 
 		form ng-submit="login()"
-
 			.form-group
 				label for="email" ==lc("activerecord.attributes.user.email")
-				input#email.form-control placeholder==lc("activerecord.attributes.user.email") type="email"/
+				input#email.form-control placeholder==lc("activerecord.attributes.user.email") type="email" ng-model='email'/
 
 			.form-group
 				label for="password" ==lc("activerecord.attributes.user.password")
-				input#password.form-control placeholder==lc("activerecord.attributes.user.password") type="password" /
+				input#password.form-control placeholder==lc("activerecord.attributes.user.password") type="password" ng-model='password'/
 
 			.btn-group.pull-right role="group"
 				a.btn.btn-default href="/" ==lc('actions.cansel')
