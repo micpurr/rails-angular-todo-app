@@ -7,7 +7,7 @@
 	'$location'
 	'$rootScope'
 	'$cookieStore'
-	( $scope, Auth, $location, $rootScope, $cookieStore ) ->
+	($scope, Auth, $location, $rootScope, $cookieStore) ->
 
 		config = headers: 'X-HTTP-Method-Override': 'DELETE'
 
@@ -15,7 +15,7 @@
 			Auth.logout(config).then ((oldUser) ->
 				$rootScope.globals = {}
 				$cookieStore.remove('globals')
-				$location.path('/login')
+				$location.path '/login' 
 			), (error) ->
-				console.log(error)
+				console.log error 
 ]

@@ -24,13 +24,13 @@
 	'$cookieStore'
 	($rootScope, $location, Auth, $cookieStore) ->
 
-		$rootScope.globals = $cookieStore.get('globals') or {}
+		$rootScope.globals = $cookieStore.get 'globals' or {}
 
 		if $cookieStore.get('globals')
 			Auth.currentUser().then ((user) ->
 				$rootScope.globals = user: user
 			), (error) ->
-				console.log(error)
+				console.log error 
 
 		$rootScope.$on '$locationChangeStart', (event, next, current) ->
 			if $location.path() != '/login' and !$rootScope.globals.user

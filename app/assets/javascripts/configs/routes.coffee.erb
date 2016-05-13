@@ -1,8 +1,9 @@
 ##
 ##  Angular application routes
 ##
-@application.config([ 
-	'$routeProvider', '$locationProvider', 
+@application.config [ 
+	'$routeProvider'
+	'$locationProvider'
 	($routeProvider, $locationProvider) ->
 
 		$routeProvider
@@ -44,5 +45,5 @@
 		##
 		##  remove anchor
 		##
-		$locationProvider.html5Mode(true)
-	])
+		$locationProvider.html5Mode true 
+]
