@@ -13,8 +13,10 @@ html lang==ENV['DEFAULT_LOCALE']
 	body ng-app="TodoList"
 		== render 'partials/layouts/nav'
 
-		main
-			== yield
+		main 
+			.spinner ng-show='showPreloader'
+			div.preloader ng-hide='showPreloader'
+				== yield
 
 		== render 'partials/layouts/footer'
 

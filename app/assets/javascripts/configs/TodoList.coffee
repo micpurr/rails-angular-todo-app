@@ -23,21 +23,49 @@
 	'Auth'
 	'$cookieStore'
 	($rootScope, $location, Auth, $cookieStore) ->
+		##
+		##  Set preloader status
+		##
+		$rootScope.showPreloader = true
 
-		cookies = $cookieStore.get 'globals'
+		##
+		##  load user from current session 
+		##  from server if exist
+		##
+		Auth.currentUser().then ((user) ->
+			##
+			##  Tern off preloader
+			##
+			$rootScope.showPreloader = false
 
-		if cookies != undefined
-			$rootScope.globals = cookies
-		else
-			$rootScope.globals = {}
+			##
+			##  Set user to $rootScope
+			##
+			$rootScope.globals = 
+				user: user
+				isAuth: true
 
-		if $cookieStore.get('globals')
-			Auth.currentUser().then ((user) ->
-				$rootScope.globals = user: user
-			), (error) ->
-				console.log error 
+		), (error) ->
+			##
+			##  Tern off preloader
+			##
+			$rootScope.showPreloader = false
 
-		$rootScope.$on '$locationChangeStart', (event, next, current) ->
-			if $location.path() != '/login' and !$rootScope.globals.user
-				$location.path '/login'
+			##
+			##  Set auth status to false
+			##
+			$rootScope.globals = isAuth: false
+
+			##
+			##  redirect to login page
+			##
+			$location.path '/login'
+		.then ->
+			$rootScope.$on '$locationChangeStart', (event, next, current) ->
+				##
+				##  Redirect to login if not user is not logged in
+				##  Cheking before every request
+				##
+				if $location.path() != '/login' and !$rootScope.globals.user
+					$location.path '/login'
 ]
