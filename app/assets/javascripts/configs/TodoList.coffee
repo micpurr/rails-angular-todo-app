@@ -24,7 +24,12 @@
 	'$cookieStore'
 	($rootScope, $location, Auth, $cookieStore) ->
 
-		$rootScope.globals = $cookieStore.get 'globals' or {}
+		cookies = $cookieStore.get 'globals'
+
+		if cookies != undefined
+			$rootScope.globals = cookies
+		else
+			$rootScope.globals = {}
 
 		if $cookieStore.get('globals')
 			Auth.currentUser().then ((user) ->
