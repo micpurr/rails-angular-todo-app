@@ -19,3 +19,4 @@ en:
         email: "email"
         password: "password"
         password_confirmation: "password confirmation"
+        created_at: "created at"

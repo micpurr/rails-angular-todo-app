@@ -1,0 +1,15 @@
+.container
+	.well class==form_size
+		h1.text-center ==lc('actions.user.profile')
+		
+		section
+			h3
+				strong
+					== lc('activerecord.models.user') + " " + lc('activerecord.attributes.user.email', :downcase) + ": "
+				| {{ globals.user.email }}
+
+			h3
+				strong
+					== lc('activerecord.models.user') + " " + lc('activerecord.attributes.user.created_at', :downcase) + ": "
+				| {{ globals.user.created_at | date:'MMMM dd, yyyy HH:MM' }}
+

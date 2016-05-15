@@ -22,15 +22,22 @@
 			##  login page
 			##
 			.when '/login',
-				templateUrl: 'sessions/login.html'
+				templateUrl: 'user/login.html'
 				controller: 'LoginController'
 
 			##
 			##  sign_up page
 			##
 			.when '/sign-up',
-				templateUrl: 'sessions/sign_up.html'
+				templateUrl: 'user/sign_up.html'
 				controller: 'SignUpController'
+
+			##
+			##  profile page
+			##
+			.when '/profile',
+				templateUrl: 'user/profile.html'
+				controller: 'ProfileController'
 
 			####################
 			##  Other routes  ##
