@@ -1,1 +1,20 @@
-h1 sign up
+.container
+	.well class==form_size({lg:6, md:6, sm:8})
+		h1.text-center ==lc('actions.user.sign_up')
+
+		form ng-submit="signUp()"
+			.form-group
+				label for="email" ==lc("activerecord.attributes.user.email")
+				input#email.form-control placeholder==lc("activerecord.attributes.user.email") type="email" ng-model='email'/
+
+			.form-group
+				label for="password" ==lc("activerecord.attributes.user.password")
+				input#password.form-control placeholder==lc("activerecord.attributes.user.password") type="password" ng-model='password'/
+
+			.form-group
+				label for="password_confirmation" ==lc("activerecord.attributes.user.password_confirmation")
+				input#password_confirmation.form-control placeholder==lc("activerecord.attributes.user.password_confirmation") type="password" ng-model='password_confirmation'/
+
+			.btn-group.pull-right role="group"
+				a.btn.btn-default href="/" ==lc('actions.cansel')
+				button.btn.btn-primary type="submit" ==lc('actions.submit')

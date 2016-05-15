@@ -18,3 +18,4 @@ en:
       user:
         email: "email"
         password: "password"
+        password_confirmation: "password confirmation"
