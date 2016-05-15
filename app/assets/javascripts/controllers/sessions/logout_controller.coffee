@@ -6,15 +6,28 @@
 	'Auth'
 	'$location'
 	'$rootScope'
-	'$cookieStore'
-	($scope, Auth, $location, $rootScope, $cookieStore) ->
-
+	($scope, Auth, $location, $rootScope) ->
+		##
+		##  Set header for request
+		##
 		config = headers: 'X-HTTP-Method-Override': 'DELETE'
 
+		##
+		##  Func for logout user
+		##
 		$scope.logout = () ->
+			##
+			##  User logout
+			##
 			Auth.logout(config).then ((oldUser) ->
-				$rootScope.globals = {}
-				$cookieStore.remove('globals')
+				##
+				##  Set auth status to false
+				##
+				$rootScope.globals = isAuth: false
+
+				##
+				##  Redirect to login page
+				##
 				$location.path '/login' 
 			), (error) ->
 				console.log error 

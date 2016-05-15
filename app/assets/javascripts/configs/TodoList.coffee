@@ -3,13 +3,11 @@
 ##
 ##  Modules 
 ##  - ngRoute
-##  - ngCookies
 ##  - Devise( Gem for auth vith devise )
 ##  - template( Gem for create templates for page )
 ##
 @application = angular.module 'TodoList', [ 
 	'ngRoute'
-	'ngCookies'
 	'Devise'
 	'templates'
 ]
@@ -21,8 +19,7 @@
 	'$rootScope'
 	'$location'
 	'Auth'
-	'$cookieStore'
-	($rootScope, $location, Auth, $cookieStore) ->
+	($rootScope, $location, Auth) ->
 		##
 		##  Set preloader status
 		##
@@ -44,7 +41,6 @@
 			$rootScope.globals = 
 				user: user
 				isAuth: true
-
 		), (error) ->
 			##
 			##  Tern off preloader
