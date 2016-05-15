@@ -58,10 +58,25 @@
 			$location.path '/login'
 		.then ->
 			$rootScope.$on '$locationChangeStart', (event, next, current) ->
+				url = $location.path()
 				##
-				##  Redirect to login if not user is not logged in
-				##  Cheking before every request
+				##  Redirect to login if user not authenticate
+				##  cheking before every request
 				##
-				if $location.path() != '/login' and !$rootScope.globals.user
+				if !$rootScope.globals.user and url != '/login' and url != '/sign-up'
+					##
+					##  Redirect to login page
+					##
 					$location.path '/login'
+
+				##
+				##  Redirect to home page
+				##  if user is authenticate
+				##  and try to go to login or sign-up page
+				##
+				if $rootScope.globals.user and ( url == '/sign-up' or url == '/login' )
+					##
+					##  Redirect to home page
+					##
+					$location.path '/'
 ]
