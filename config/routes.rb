@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 	##
+	##  API scope fore isolate url
+	##
+	scope 'api' do
+		##
+		##  project resource
+		##
+		resources :projects
+	end
+
+	##
 	##  Root path
 	##
 	root "application#index"
