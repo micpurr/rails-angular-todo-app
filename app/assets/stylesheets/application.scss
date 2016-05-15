@@ -1,9 +1,11 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "variables";
 @import "nav";
 @import "footer";
 @import "preloader";
 @import "projects";
+@import "tasks";
 
 body {
 	display: flex;

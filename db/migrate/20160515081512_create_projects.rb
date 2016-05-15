@@ -1,7 +1,8 @@
 class CreateProjects < ActiveRecord::Migration
 	def change
 		create_table :projects do |t|
-			t.string :name, null: false, limit: 255
+			t.references :user, index: true, foreign_key: true
+			t.string     :name, null: false, limit: 255
 
 			t.timestamps null: false
 		end

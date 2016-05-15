@@ -1,11 +1,30 @@
 .container
-	/ p ng-repeat='project in projects'
+	.panel.panel-primary
+		.panel-heading
+			| Lorem ipsum.
+		.panel-body
+			p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, aliquid?
 	.row
-		div class==form_size
+		div.panel-project class==form_size
 			.panel.panel-primary ng-repeat='project in projects'
 				.panel-heading
 					| {{ project.name }}
 				.panel-new-task
 					| Lorem ipsum dolor sit amet.
-				.panel-body
-					| tasks
+				.table-responsive
+					table.table.table-bordered.table-task.table-hover
+						tbody
+							tr ng-repeat='task in project.tasks'
+								td.done
+									input type="checkbox" value="{{ task.done }}"
+								td
+									| {{ task.name }}
+								td.dedline-days-left
+									| {{ task.get_deadline_days_left }}
+								td.actions
+									a ng-click='' href=''
+										span.glyphicon.glyphicon-pencil aria-hidden="true"
+									a ng-click='' href=''
+										span.glyphicon.glyphicon-sort aria-hidden="true"
+									a ng-click='' href=''
+										span.glyphicon.glyphicon-trash aria-hidden="true"

@@ -1,15 +1,18 @@
-.panel{
-	border-radius: 0 0 10px 10px;
-}
-
-.panel-primary{
-	border-color: rgba(100, 100, 100, .4);
-	& > .panel-heading{
-		border-radius: 0;
+.panel-project {
+	.panel{
+		border-radius: 0 0 10px 10px;
 	}
-}
 
-.panel-new-task {
-	background-color: #eee;
-	padding: 10px 15px;
+	.panel-primary{
+		border-color: $project-border-color;
+		
+		& > .panel-heading{
+			border-radius: 0;
+		}
+	}
+
+	.panel-new-task {
+		background-color: $panel-new-task-bg-color;
+		padding: 10px 15px;
+	}
 }

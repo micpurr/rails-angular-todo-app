@@ -6,7 +6,16 @@ Rails.application.routes.draw do
 		##
 		##  project resource
 		##
-		resources :projects, defaults: {format: :json}
+		resources :projects, 
+			defaults: {format: :json}, 
+			except: [:new, :edit] do
+			##
+			##  task resource
+			##
+			resources :tasks, 
+				defaults: {format: :json}, 
+				except: [:new, :edit, :index]
+		end
 	end
 
 	##
