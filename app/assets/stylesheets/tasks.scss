@@ -1,23 +1,33 @@
-td {
-	&.actions {
-		width: 113px;
+.actions {
+	width: 113px;
 
-		& > a {
-			color: inherit;
+	& > a {
+		color: inherit;
 
-			&:after{
-				margin-right: $margin-content-after;
-				margin-left: $margin-content-after;
-				content: '|'
-			}
+		&:after{
+			margin-right: $margin-content-after;
+			margin-left: $margin-content-after;
+			content: '|';
+			vertical-align: text-bottom;
+		}
 
-			&:last-child:after{
-				content: '';
-				margin: 0;
-			}
+		&:last-child:after{
+			content: '';
+			margin: 0;
 		}
 	}
+}
+
+div.actions{
+	width: auto;
 	
+	& > a{
+		color: rgb(180,180,180);
+		font-size: 15px;
+	}
+}
+
+td {
 	&.done {
 		width: 13px;
 	}

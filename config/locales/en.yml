@@ -1,6 +1,7 @@
 en:
   actions:
     edit: "edit"
+    add: 'add'
     new: "new"
     show: 'show'
     delete: "delete"
@@ -11,10 +12,24 @@ en:
       login: "login"
       logout: "logout"
       sign_up: "sign up"
+  messages:
+    forms:
+      models:
+        task:
+          new_task_input: "Start typing here to create a task"
   activerecord:
     models:
       user: "user"
+      project: "project"
+      task: "task"
     attributes:
+      project:
+        name: "name"
+      task: 
+        name: "name"
+        done: "done"
+        priority: "priority"
+        deadline: "deadline"
       user:
         email: "email"
         password: "password"

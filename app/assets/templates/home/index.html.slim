@@ -1,16 +1,25 @@
 .container
-	.panel.panel-primary
-		.panel-heading
-			| Lorem ipsum.
-		.panel-body
-			p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas, aliquid?
 	.row
 		div.panel-project class==form_size
 			.panel.panel-primary ng-repeat='project in projects'
 				.panel-heading
+					span.calendar.glyphicon.glyphicon-calendar aria-hidden="true"
 					| {{ project.name }}
+					.actions.pull-right
+						a ng-click='' href=''
+							span.glyphicon.glyphicon-pencil aria-hidden="true"
+						a ng-click='' href=''
+							span.glyphicon.glyphicon-trash aria-hidden="true"
 				.panel-new-task
-					| Lorem ipsum dolor sit amet.
+					form
+						.input-group
+							span.input-group-btn
+								a.btn.text-success
+									span.glyphicon.glyphicon-plus aria-hidden="true"
+							input.form-control placeholder==lc('messages.forms.models.task.new_task_input') type="text" /
+							span.input-group-btn
+								button.btn.btn-success type="button" 
+									== lc('actions.add') + " " + lc('activerecord.models.task')
 				.table-responsive
 					table.table.table-bordered.table-task.table-hover
 						tbody
@@ -23,8 +32,8 @@
 									| {{ task.get_deadline_days_left }}
 								td.actions
 									a ng-click='' href=''
-										span.glyphicon.glyphicon-pencil aria-hidden="true"
-									a ng-click='' href=''
 										span.glyphicon.glyphicon-sort aria-hidden="true"
+									a ng-click='' href=''
+										span.glyphicon.glyphicon-pencil aria-hidden="true"
 									a ng-click='' href=''
 										span.glyphicon.glyphicon-trash aria-hidden="true"
