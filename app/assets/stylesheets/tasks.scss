@@ -41,7 +41,15 @@ td {
 	}
 }
 
-.table-task > tbody > tr > td {
-	color: $table-task-text-color;
-	padding: 15px;
+.table-task > tbody {
+	& > tr {
+		&:hover{
+			background: rgba(#F1F41B, .1);
+		}
+
+		& > td {
+			color: $table-task-text-color;
+			padding: 15px;
+		}
+	}
 }

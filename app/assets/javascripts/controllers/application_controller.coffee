@@ -9,4 +9,6 @@
 
 		$scope.projects = Project.query()
 
+		$scope.isHoverProjectName = false
+
 ]
