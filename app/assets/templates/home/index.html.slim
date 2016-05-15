@@ -4,22 +4,28 @@
 			.panel.panel-primary ng-repeat='project in projects'
 				.panel-heading ng-mouseover="isHoverProjectName = true" ng-mouseleave="isHoverProjectName = false" 
 					span.calendar.glyphicon.glyphicon-calendar aria-hidden="true"
+
 					| {{ project.name }}
+
 					.actions.pull-right ng-show='isHoverProjectName'
 						a ng-click='' href=''
 							span.glyphicon.glyphicon-pencil aria-hidden="true"
 						a ng-click='' href=''
 							span.glyphicon.glyphicon-trash aria-hidden="true"
+
 				.panel-new-task
 					form
 						.input-group
 							span.input-group-btn
 								a.btn.text-success
 									span.glyphicon.glyphicon-plus aria-hidden="true"
+
 							input.form-control placeholder==lc('messages.forms.models.task.new_task_input') type="text" /
+
 							span.input-group-btn
 								button.btn.btn-success type="button" 
 									== lc('actions.add') + " " + lc('activerecord.models.task')
+
 				.table-responsive
 					table.table.table-bordered.table-task.table-hover
 						tbody
@@ -33,7 +39,7 @@
 								td.actions
 									a ng-click='' href=''
 										span.glyphicon.glyphicon-sort aria-hidden="true"
-									a ng-click='' href=''
+									a href="projects/{{ project.id }}/tasks/{{ task.id }}"
 										span.glyphicon.glyphicon-pencil aria-hidden="true"
 									a ng-click='' href=''
 										span.glyphicon.glyphicon-trash aria-hidden="true"

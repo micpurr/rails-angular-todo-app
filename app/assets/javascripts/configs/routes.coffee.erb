@@ -43,6 +43,17 @@
 			##  Projects  ##
 			################
 
+			#############
+			##  Tasks  ##
+			#############
+
+			##
+			##  GET projects/:project_id/tasks/:id
+			##
+			.when '/projects/:project_id/tasks/:id',
+				templateUrl: 'tasks/show.html'
+				controller: 'TasksController'
+
 			####################
 			##  Other routes  ##
 			####################
