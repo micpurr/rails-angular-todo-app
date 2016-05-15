@@ -23,11 +23,11 @@ td {
 	}
 
 	&.dedline-days-left{
-		max-width: 40px;
 		min-width: 10px;
+		max-width: 50px;
 		text-align: center;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
+		padding-left: $deadline-days-left-padding !important;
+		padding-right: $deadline-days-left-padding !important;
 	}
 }
 
