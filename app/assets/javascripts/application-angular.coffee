@@ -19,6 +19,11 @@
 //= require_tree ./controllers
 
 ##
+##  Factories
+##
+//= require_tree ./factories
+
+##
 ##  HTML(slim) Templates
 ##
 //= require_tree ../templates

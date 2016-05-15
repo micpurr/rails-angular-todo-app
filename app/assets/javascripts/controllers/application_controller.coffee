@@ -4,8 +4,9 @@
 @application.controller 'ApplicationController', [ 
 	'$scope'
 	'Auth' 
-	($scope, Auth) ->
+	'Project'
+	($scope, Auth, Project) ->
 
-		
+		$scope.projects = Project.query()
 
 ]

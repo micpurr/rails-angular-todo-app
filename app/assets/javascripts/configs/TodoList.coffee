@@ -8,6 +8,7 @@
 ##
 @application = angular.module 'TodoList', [ 
 	'ngRoute'
+	'ngResource'
 	'Devise'
 	'templates'
 ]
