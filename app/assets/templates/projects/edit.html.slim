@@ -1,0 +1,13 @@
+.container
+	.row
+		.well class==form_size
+			form ng-submit='formProject(project)'
+				h1.text-center == "{{ action }} " + lc("activerecord.models.project")
+
+				.form-group
+					label for="name" ==lc("activerecord.attributes.project.name")
+					input#name.form-control placeholder==lc("activerecord.attributes.project.name") type="text" ng-model='project.name'/
+				
+				.btn-group.pull-right role="group"
+					a.btn.btn-default href="/" ==lc('actions.cansel')
+					button.btn.btn-primary type="submit" ==lc('actions.submit')

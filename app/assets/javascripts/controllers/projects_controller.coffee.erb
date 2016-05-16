@@ -1,0 +1,28 @@
+##
+##  Projects controller
+##
+@application.controller 'ProjectsController', [ 
+	'$scope'
+	'$routeParams' 
+	'Project'
+	'$location'
+	($scope, $routeParams, Project, $location) ->
+
+		if $routeParams.id
+			$scope.isNew = false
+			$scope.action = "<%= lc('actions.edit') %>"
+			Project.get {project_id: $routeParams.project_id, id: $routeParams.id}, (data) ->
+				$scope.project = data
+		else
+			$scope.isNew = true
+			$scope.action = "<%= lc('actions.new') %>"
+			$scope.project = new Project()
+
+		$scope.formProject = (project) ->
+			if $scope.isNew
+				project.$save id: project.id,
+					-> $location.path('/')
+			else
+				project.$update id: project.id,
+					-> $location.path('/')
+]
