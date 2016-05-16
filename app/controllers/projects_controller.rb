@@ -3,10 +3,14 @@ class ProjectsController < ApplicationController
 
 	# GET /api/projects.json
 	def index
-		@projects = Project.all
+		if user_signed_in?
+			@projects = current_user.projects
 
-		respond_to do |format|
-			format.json { render :index }
+			respond_to do |format|
+				format.json { render :index }
+			end
+		else
+			render json: {message: 'You are not authorized'}, status: 401
 		end
 	end
 
@@ -16,40 +20,56 @@ class ProjectsController < ApplicationController
 
 	# POST /api/projects.json
 	def create
-		@project = Project.new(project_params)
+		if user_signed_in?
+			@project = current_user.projects.new(project_params)
 
-		respond_to do |format|
-			if @project.save
-				format.json { render :show, status: :created, location: @project }
-			else
-				format.json { render json: @project.errors, status: :unprocessable_entity }
+			respond_to do |format|
+				if @project.save
+					format.json { render :show, status: :created, location: @project }
+				else
+					format.json { render json: @project.errors, status: :unprocessable_entity }
+				end
 			end
+		else
+			render json: {message: 'You are not authorized'}, status: 401
 		end
 	end
 
 	# PATCH/PUT /api/projects/1.json
 	def update
-		respond_to do |format|
-			if @project.update(project_params)
-				format.json { render :show, status: :ok, location: @project }
-			else
-				format.json { render json: @project.errors, status: :unprocessable_entity }
+		if user_signed_in?
+			respond_to do |format|
+				if @project.update(project_params)
+					format.json { render :show, status: :ok, location: @project }
+				else
+					format.json { render json: @project.errors, status: :unprocessable_entity }
+				end
 			end
+		else
+			render json: {message: 'You are not authorized'}, status: 401
 		end
 	end
 
 	# DELETE /api/projects/1.json
 	def destroy
-		@project.destroy
-		respond_to do |format|
-			format.json { head :no_content }
+		if user_signed_in?
+			@project.destroy
+			respond_to do |format|
+				format.json { head :no_content }
+			end
+		else
+			render json: {message: 'You are not authorized'}, status: 401
 		end
 	end
 
 	private
 		# Use callbacks to share common setup or constraints between actions.
 		def set_project
-			@project = Project.find(params[:id])
+			if user_signed_in?
+				@project = current_user.projects.find(params[:id])
+			else
+				render json: {message: 'You are not authorized'}, status: 401
+			end
 		end
 
 		# Never trust parameters from the scary internet, only allow the white list through.
