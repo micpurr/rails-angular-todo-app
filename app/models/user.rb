@@ -8,5 +8,5 @@ class User < ActiveRecord::Base
 				:trackable, 
 				:validatable
 
-	has_many :projects
+	has_many :projects, dependent: :delete_all
 end
