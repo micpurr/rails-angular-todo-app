@@ -11,4 +11,6 @@
 
 		$scope.isHoverProjectName = false
 
+		$scope.isHoverTask = false
+
 ]

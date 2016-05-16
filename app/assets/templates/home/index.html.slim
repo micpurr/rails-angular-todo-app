@@ -29,7 +29,7 @@
 				.table-responsive
 					table.table.table-bordered.table-task.table-hover
 						tbody
-							tr ng-repeat='task in project.tasks'
+							tr ng-repeat='task in project.tasks' ng-mouseover="isHoverTask = true" ng-mouseleave="isHoverTask = false"
 								td.done
 									input type="checkbox" value="{{ task.done }}"
 								td
@@ -37,9 +37,9 @@
 								td.dedline-days-left
 									| {{ task.get_deadline_days_left }}
 								td.actions
-									a ng-click='' href=''
+									a ng-click='' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-sort aria-hidden="true"
-									a href="projects/{{ project.id }}/tasks/{{ task.id }}"
+									a href="projects/{{ project.id }}/tasks/{{ task.id }}" ng-show='isHoverTask'
 										span.glyphicon.glyphicon-pencil aria-hidden="true"
-									a ng-click='' href=''
+									a ng-click='' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-trash aria-hidden="true"
