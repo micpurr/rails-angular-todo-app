@@ -44,6 +44,7 @@ td {
 .table-task > tbody {
 	& > tr {
 		&:hover{
+			cursor: pointer;
 			background: rgba(#F1F41B, .1);
 		}
 
