@@ -3,7 +3,7 @@ json.array!(@projects.includes(:tasks)) do |project|
 
 	json.tasks do
 		json.array!(project.tasks) do |task|
-			json.extract! task, :id, :name, :done, :priority, :deadline, :get_deadline_days_left
+			json.extract! task, :id, :project_id, :name, :done, :priority, :deadline, :get_deadline_days_left
 		end
 	end
 

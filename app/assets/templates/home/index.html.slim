@@ -41,5 +41,5 @@
 										span.glyphicon.glyphicon-sort aria-hidden="true"
 									a href="projects/{{ project.id }}/tasks/{{ task.id }}" ng-show='isHoverTask'
 										span.glyphicon.glyphicon-pencil aria-hidden="true"
-									a ng-click='' href='' ng-show='isHoverTask'
+									a ng-click='removeTask(task)' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-trash aria-hidden="true"
