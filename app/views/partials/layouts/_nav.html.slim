@@ -17,7 +17,7 @@ nav.navbar.navbar-default
 						li
 							= link_to lc('actions.user.profile'), 'profile'
 						li.divider
-						li ng-controller='LogoutController' ng-hide="globals.user === undefined"
+						li ng-controller='AuthController' ng-hide="globals.user === undefined"
 							= link_to lc('actions.user.logout'), '', 'ng-click': 'logout()'
 				li ng-show="globals.user === undefined"
 					= link_to lc('actions.user.login'), 'login'
