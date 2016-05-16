@@ -29,3 +29,10 @@
 		}
 	}
 }
+
+.add-new-project-btn{
+	text-align: center;
+	& > a > span {
+		margin-right: 10px;
+	}
+}
