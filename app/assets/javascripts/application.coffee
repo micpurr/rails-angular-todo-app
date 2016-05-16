@@ -8,3 +8,9 @@
 ##  Bootstrap libs
 ##
 //= require bootstrap-sprockets
+
+##
+##  Other
+##
+//= require picker
+//= require picker.date

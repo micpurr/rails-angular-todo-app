@@ -14,14 +14,14 @@
 //= require configs/routes
 
 ##
-##  Controllers
-##
-//= require_tree ./controllers
-
-##
 ##  Factories
 ##
 //= require_tree ./factories
+
+##
+##  Controllers
+##
+//= require_tree ./controllers
 
 ##
 ##  HTML(slim) Templates
