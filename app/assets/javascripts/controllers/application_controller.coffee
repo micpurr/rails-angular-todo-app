@@ -48,6 +48,9 @@
 					$scope.addTaskToProject(task)
 					project.task = {}
 
+		$scope.increaseTaskPriority = (task) ->
+			# TODO: Create priority increase
+
 		$scope.removeProject = (project) ->
 			Project.remove { id: project.id },
 				-> $scope.removeProjectById project.id

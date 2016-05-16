@@ -1,4 +1,4 @@
-.container
+.container#gg
 	.row
 		div.panel-project class==form_size
 			.panel.panel-primary ng-repeat='project in projects'
@@ -8,22 +8,24 @@
 					| {{ project.name }}
 
 					.actions.pull-right ng-show='isHoverProjectName'
-						a ng-click='' href=''
+						a href='projects/{{ project.id }}/edit'
 							span.glyphicon.glyphicon-pencil aria-hidden="true"
-						a ng-click='' href=''
+						a ng-click='removeProject(project)' href=''
 							span.glyphicon.glyphicon-trash aria-hidden="true"
 
 				.panel-new-task
-					form
+					form ng-submit='newTask(project)'
+						input type='hidden' value="{{ project.id }}" ng-model="project.task.project_id"
+
 						.input-group
 							span.input-group-btn
-								a.btn.text-success
-									span.glyphicon.glyphicon-plus aria-hidden="true"
+								a.btn.text-success 
+									span.glyphicon.glyphicon-plus aria-hidden="true" dp=""
 
-							input.form-control placeholder==lc('messages.forms.models.task.new_task_input') type="text" /
+							input.form-control ng-model="project.task.name" placeholder==lc('messages.forms.models.task.new_task_input') type="text" /
 
 							span.input-group-btn
-								button.btn.btn-success type="button" 
+								button.btn.btn-success type="submit"
 									== lc('actions.add') + " " + lc('activerecord.models.task')
 
 				.table-responsive
@@ -37,9 +39,14 @@
 								td.dedline-days-left
 									| {{ task.get_deadline_days_left }}
 								td.actions
-									a ng-click='' href='' ng-show='isHoverTask'
+									a ng-click='increaseTaskPriority(task)' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-sort aria-hidden="true"
 									a href="projects/{{ project.id }}/tasks/{{ task.id }}" ng-show='isHoverTask'
 										span.glyphicon.glyphicon-pencil aria-hidden="true"
 									a ng-click='removeTask(task)' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-trash aria-hidden="true"
+
+			.add-new-project-btn
+				a.btn.btn-primary href='projects/new'
+					span.glyphicon.glyphicon-plus aria-hidden="true"
+					== lc("actions.add") + " " + lc("activerecord.models.project")
