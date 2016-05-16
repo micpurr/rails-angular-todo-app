@@ -50,6 +50,9 @@
 
 		$scope.increaseTaskPriority = (task) ->
 			# TODO: Create priority increase
+		
+		$scope.toggleTaskDone = (task) ->
+			# TODO: Create toggle for done field
 
 		$scope.removeProject = (project) ->
 			Project.remove { id: project.id },

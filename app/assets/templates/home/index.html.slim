@@ -33,7 +33,7 @@
 						tbody
 							tr ng-repeat='task in project.tasks' ng-mouseover="isHoverTask = true" ng-mouseleave="isHoverTask = false"
 								td.done
-									input type="checkbox" value="{{ task.done }}"
+									input type="checkbox" value="{{ task.done }}" ng-click="toggleTaskDone(task)"
 								td
 									| {{ task.name }}
 								td.dedline-days-left
