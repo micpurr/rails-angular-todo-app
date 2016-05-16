@@ -9,7 +9,7 @@ class Task < ActiveRecord::Base
 	##
 	def get_deadline_days_left
 		if deadline.present?
-			(deadline - DateTime.now).to_i
+			(deadline - Date.today).to_i
 		else
 			0
 		end
