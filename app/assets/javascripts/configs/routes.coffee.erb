@@ -43,6 +43,20 @@
 			##  Projects  ##
 			################
 
+			##
+			##  GET projects/new
+			##
+			.when '/projects/new',
+				templateUrl: 'projects/edit.html'
+				controller: 'ProjectsController'
+
+			##
+			##  GET projects/:id/edit
+			##
+			.when '/projects/:id/edit',
+				templateUrl: 'projects/edit.html'
+				controller: 'ProjectsController'
+
 			#############
 			##  Tasks  ##
 			#############
@@ -50,9 +64,9 @@
 			##
 			##  GET projects/:project_id/tasks/:id
 			##
-			.when '/projects/:project_id/tasks/:id',
-				templateUrl: 'tasks/show.html'
-				controller: 'TasksController'
+			# .when '/projects/:project_id/tasks/:id',
+			# 	templateUrl: 'tasks/show.html'
+			# 	controller: 'TasksController'
 
 			####################
 			##  Other routes  ##
