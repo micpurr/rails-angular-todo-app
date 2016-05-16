@@ -95,3 +95,16 @@
 					##
 					$location.path '/'
 ]
+
+@application.directive 'dp', [ ->
+	{
+		restrict: 'A'
+		link: (scope, elem, attrs) ->
+			$(elem).pickadate
+				container: $(elem).parents('.panel-new-task')
+				onSet: (contex) ->
+					if scope.project.task == undefined
+						scope.project.task = {}
+					scope.project.task.deadline = new Date(contex.select)
+	}
+]
