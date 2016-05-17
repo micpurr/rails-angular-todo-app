@@ -1,28 +1,48 @@
-##
-##  Projects controller
-##
+#
+#  Projects controller
+#
 @application.controller 'ProjectsController', [ 
 	'$scope'
 	'$routeParams' 
+	'ProjectProvider'
 	'Project'
-	'$location'
-	($scope, $routeParams, Project, $location) ->
+	($scope, $routeParams, ProjectProvider, Project) ->
+		#
+		#  ProjectProvider for managing project
+		#
+		$scope.Project = ProjectProvider
 
+		#
+		#  Cheking if new project or edit
+		#
 		if $routeParams.id
+			#
+			#  State for checking
+			#
 			$scope.isNew = false
-			$scope.action = "<%= lc('actions.edit') %>"
-			Project.get {id: $routeParams.id}, (data) ->
-				$scope.project = data
-		else
-			$scope.isNew = true
-			$scope.action = "<%= lc('actions.new') %>"
-			$scope.project = new Project()
 
-		$scope.formProject = (project) ->
-			if $scope.isNew
-				project.$save id: project.id,
-					-> $location.path('/')
-			else
-				project.$update id: project.id,
-					-> $location.path('/')
+			#
+			#  Name of current action (New or Edir)
+			#
+			$scope.action = "<%= lc('actions.edit') %>"
+
+			#
+			#  Get project
+			#
+			$scope.project = $scope.Project.get $routeParams.id
+		else
+			#
+			#  State for checking
+			#
+			$scope.isNew = true
+
+			#
+			#  Name of current action (New or Edir)
+			#
+			$scope.action = "<%= lc('actions.new') %>"
+
+			#
+			#  Set new empty project to scope
+			#
+			$scope.project = new Project()
 ]

@@ -6,7 +6,6 @@
 	'ProjectProvider'
 	'TaskProvider'
 	($scope, ProjectProvider, TaskProvider) ->
-
 		#
 		#  TaskProvider for managing tasks
 		#
@@ -16,10 +15,11 @@
 		#  ProjectProvider for managing projects
 		#
 		$scope.Project = ProjectProvider
+
 		#
 		#  Get all project
 		#
-		$scope.projects = Project.all
+		$scope.projects = $scope.Project.all()
 
 		#
 		#  Variable store state of showing 

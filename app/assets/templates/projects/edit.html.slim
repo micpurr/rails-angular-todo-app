@@ -1,7 +1,7 @@
 .container
 	.row
 		.well class==form_size
-			form ng-submit='formProject(project)'
+			form ng-submit='Project.saveOrUpdate(isNew, project)'
 				h1.text-center == "{{ action }} " + lc("activerecord.models.project")
 
 				.form-group
