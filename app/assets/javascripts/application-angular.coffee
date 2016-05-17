@@ -1,6 +1,6 @@
-##
-##  Angular core
-##
+#
+#  Angular core
+#
 //= require angular
 //= require angular-resource
 //= require angular-route
@@ -8,33 +8,38 @@
 //= require angular-devise
 //= require angularjs-file-upload
 
-##
-##  Configs
-##
+#
+#  Configs
+#
 //= require configs/TodoList
 //= require configs/routes
 
-##
-##  Services
-##
+#
+#  Services
+#
 //= require_tree ./services
 
-##
-##  Directives
-##
+#
+#  comment
+#
+//= require_tree ./providers
+
+#
+#  Directives
+#
 //= require_tree ./directives
 
-##
-##  Factories
-##
+#
+#  Factories
+#
 //= require_tree ./factories
 
-##
-##  Controllers
-##
+#
+#  Controllers
+#
 //= require_tree ./controllers
 
-##
-##  HTML(slim) Templates
-##
+#
+#  HTML(slim) Templates
+#
 //= require_tree ../templates
