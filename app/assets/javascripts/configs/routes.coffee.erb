@@ -1,15 +1,15 @@
-##
-##  Angular application routes
-##
+#
+#  Angular application routes
+#
 @application.config [ 
 	'$routeProvider'
 	'$locationProvider'
 	($routeProvider, $locationProvider) ->
 
 		$routeProvider
-			##
-			##  index page
-			##
+			#
+			#  index page
+			#
 			.when '/',
 				templateUrl: 'home/index.html'
 				controller: 'ApplicationController'
@@ -18,23 +18,23 @@
 			##  Users AUTH  ##
 			##################
 
-			##
-			##  login page
-			##
+			#
+			#  login page
+			#
 			.when '/login',
 				templateUrl: 'user/login.html'
 				controller: 'AuthController'
 
-			##
-			##  sign_up page
-			##
+			#
+			#  sign_up page
+			#
 			.when '/sign-up',
 				templateUrl: 'user/sign_up.html'
 				controller: 'AuthController'
 
-			##
-			##  profile page
-			##
+			#
+			#  profile page
+			#
 			.when '/profile',
 				templateUrl: 'user/profile.html'
 				controller: 'AuthController'
@@ -43,16 +43,16 @@
 			##  Projects  ##
 			################
 
-			##
-			##  GET projects/new
-			##
+			#
+			#  GET projects/new
+			#
 			.when '/projects/new',
 				templateUrl: 'projects/edit.html'
 				controller: 'ProjectsController'
 
-			##
-			##  GET projects/:id/edit
-			##
+			#
+			#  GET projects/:id/edit
+			#
 			.when '/projects/:id/edit',
 				templateUrl: 'projects/edit.html'
 				controller: 'ProjectsController'
@@ -61,16 +61,16 @@
 			##  Tasks  ##
 			#############
 
-			##
-			##  GET projects/:project_id/tasks/:id
-			##
+			#
+			#  GET projects/:project_id/tasks/:id
+			#
 			.when '/projects/:project_id/tasks/:id',
 				templateUrl: 'tasks/show.html'
 				controller: 'TasksController'
 
-			##
-			##  GET projects/:project_id/tasks/:id/edit
-			##
+			#
+			#  GET projects/:project_id/tasks/:id/edit
+			#
 			.when '/projects/:project_id/tasks/:id/:action',
 				templateUrl: 'tasks/edit.html'
 				controller: 'TasksController'
@@ -79,14 +79,14 @@
 			##  Other routes  ##
 			####################
 
-			##
-			##  404 page
-			##
+			#
+			#  404 page
+			#
 			.otherwise
 				templateUrl: '404.html'
 
-		##
-		##  remove anchor
-		##
+		#
+		#  remove anchor
+		#
 		$locationProvider.html5Mode true 
 ]
