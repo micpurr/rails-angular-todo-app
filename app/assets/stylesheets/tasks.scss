@@ -51,6 +51,13 @@ td {
 		& > td {
 			color: $table-task-text-color;
 			padding: 15px;
+
+			& > a.show {
+				text-decoration: none;
+				color: inherit;
+				width: 100%;
+				display: block;
+			}
 		}
 	}
 }

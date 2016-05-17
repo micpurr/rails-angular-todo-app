@@ -1,0 +1,24 @@
+.container
+	.row
+		.well class==form_size
+			form ng-submit='formTask(task)'
+				h1.text-center == "{{ action }} " + lc("activerecord.models.task")
+
+				.form-group
+					label for="name" ==lc("activerecord.attributes.task.name")
+					input#name.form-control placeholder==lc("activerecord.attributes.task.name") type="text" ng-model='task.name'/
+
+				.form-group
+					label for="deadline" ==lc("activerecord.attributes.task.deadline")
+					input#deadline.form-control placeholder==lc("activerecord.attributes.task.deadline") type="datetime" pickadate="task" pickadate-model="task"/
+
+				.form-group
+					.checkbox
+						label
+							input type="checkbox" ng-model="task.done"/
+							==lc("activerecord.attributes.task.done")
+
+
+				.btn-group.pull-right role="group"
+					a.btn.btn-default href="/" ==lc('actions.cansel')
+					button.btn.btn-primary type="submit" ==lc('actions.submit')

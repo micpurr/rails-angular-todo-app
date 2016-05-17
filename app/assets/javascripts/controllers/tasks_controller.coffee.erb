@@ -1,0 +1,25 @@
+##
+##  Tasks controller
+##
+@application.controller 'TasksController', [ 
+	'$scope'
+	'$routeParams' 
+	'Task'
+	'$location'
+	($scope, $routeParams, Task, $location) ->
+
+		$scope.action = "<%= lc('actions.edit') %>"
+
+		Task.get {project_id: $routeParams.project_id, id: $routeParams.id}, (data) ->
+			$scope.task = data
+			$scope.task.deadline = new Date($scope.task.deadline)
+			if $routeParams.action == 'edit'
+				$("#deadline").pickadate('picker').set('select', $scope.task.deadline)
+
+		$scope.formTask = (task) ->
+			task.$update {
+				id: task.id
+				project_id: task.project_id
+			}, -> 
+				$location.path('/')
+]

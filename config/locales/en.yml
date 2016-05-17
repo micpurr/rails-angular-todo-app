@@ -16,7 +16,8 @@ en:
     forms:
       models:
         task:
-          new_task_input: "Start typing here to create a task"
+          deadline_days_left: "days to deadline left: "
+          new_task_input: "start typing here to create a task"
   activerecord:
     models:
       user: "user"
