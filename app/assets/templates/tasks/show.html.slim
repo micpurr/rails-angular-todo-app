@@ -2,7 +2,7 @@
 	.row
 		h1.text-center ==lc('activerecord.models.task')
 
-		.well class==form_size
+		.well class==form_size ng-class="{'well-success': task.done, 'well-danger': !task.done}"
 
 			h3
 				strong
@@ -23,8 +23,9 @@
 					== lc('activerecord.attributes.task.done') + ": "
 					span.glyphicon ng-class="{'glyphicon-ok text-success': task.done, 'glyphicon-remove text-danger': !task.done}" aria-hidden="true"
 
-			.pull-right
+			.btn-group.pull-right role="group"
 				a.btn.btn-default href="/" ==lc("actions.cansel")
+				a.btn.btn-primary href="projects/{{ task.project_id }}/tasks/{{ task.id }}/edit" ==lc("actions.edit")
 	
 	.row
 		h1.text-center ==lc('activerecord.models.comment').pluralize
@@ -49,7 +50,7 @@
 					a.btn.btn-default href="/" ==lc('actions.cansel')
 					button.btn.btn-primary type="submit" ==lc('actions.submit')
 
-	.row
+	.row ng-show="task.comments.length > 0"
 		.well class==form_size 
 			div.comment-list ng-repeat="comment in task.comments"
 				h2 hg-show="comment.title.length > 0"

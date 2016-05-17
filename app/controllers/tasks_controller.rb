@@ -33,6 +33,10 @@ class TasksController < ApplicationController
 	def create
 		@task = current_user.projects.find(task_params['project_id']).tasks.new(task_params)
 
+		if @task.deadline.blank?
+			@task.deadline = Date.today
+		end
+
 		respond_to do |format|
 			if @task.save
 				format.json { render :show, status: :created, location: @task }

@@ -13,7 +13,7 @@
 						a ng-click='removeProject(project)' href=''
 							span.glyphicon.glyphicon-trash aria-hidden="true"
 
-				.panel-new-task
+				.panel-new-task ng-class="{'add-border-radius': project.tasks.length == 0}"
 					form ng-submit='newTask(project)'
 						input type='hidden' value="{{ project.id }}" ng-model="project.task.project_id"
 
@@ -37,8 +37,6 @@
 								td
 									a.show href='/projects/{{project.id}}/tasks/{{task.id}}'
 										| {{ task.name }}
-								td.dedline-days-left
-									| {{ task.get_deadline_days_left }}
 								td.actions
 									.btn-group-vertical.icon-group
 										a ng-click='changeTaskPriority(project, task, "up")' href='' ng-show='isHoverTask'
@@ -50,9 +48,6 @@
 										span.glyphicon.glyphicon-pencil aria-hidden="true"
 									a ng-click='removeTask(task)' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-trash aria-hidden="true"
-
-								td
-									| {{ task.position }}
 
 			.add-new-project-btn
 				a.btn.btn-primary href='projects/new'

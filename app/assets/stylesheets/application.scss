@@ -19,3 +19,21 @@ body {
 main {
 	flex: 1 0 auto;
 }
+
+.well-primary{
+	background-color: lighten($brand-primary, 40%);
+}
+
+.well-success{
+	background-color: lighten($brand-success, 40%);
+}
+
+.well-danger{
+	background-color: lighten($brand-danger, 34%);
+}
+
+.btn-group {
+	& > .btn {
+		min-width: 100px;
+	}
+}

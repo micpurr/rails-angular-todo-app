@@ -104,7 +104,7 @@
 			dpmodel: '=pickadateModel'
 		link: (scope, elem, attrs) ->
 			position = null
-			if attrs.pickadatenewPosition
+			if attrs.pickadateNewPosition
 				position = $(elem).parents('.panel-new-task')
 
 			$(elem).pickadate
