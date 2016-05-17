@@ -71,7 +71,7 @@
 			##
 			##  GET projects/:project_id/tasks/:id/edit
 			##
-			.when '/projects/:project_id/tasks/:id/edit',
+			.when '/projects/:project_id/tasks/:id/:action',
 				templateUrl: 'tasks/edit.html'
 				controller: 'TasksController'
 
