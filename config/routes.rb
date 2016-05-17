@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 		resources :projects, 
 			defaults: {format: :json}, 
 			except: [:new, :edit] 
+
 		##
 		##  task resource
 		##
@@ -17,6 +18,10 @@ Rails.application.routes.draw do
 			except: [:new, :edit, :index] do
 			post 'change_priority' => 'tasks#change_priority'
 		end
+
+		resources :comments,
+			defaults: {format: :json}, 
+			only: [:create, :destroy, :index]
 	end
 
 	##

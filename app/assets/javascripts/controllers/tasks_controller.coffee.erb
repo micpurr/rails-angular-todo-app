@@ -6,9 +6,28 @@
 	'$routeParams' 
 	'Task'
 	'$location'
-	($scope, $routeParams, Task, $location) ->
+	'FileUploader'
+	'Comment'
+	($scope, $routeParams, Task, $location, FileUploader, Comment) ->
 
 		$scope.action = "<%= lc('actions.edit') %>"
+
+		$scope.uploader = new FileUploader {
+			url: '/api/comments' 
+			headers: 
+				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+			onBeforeUploadItem: (item)->
+				item.formData.push {
+					project_id: $scope.task.project_id
+					task_id: $scope.task.id
+					title: $scope.comment.title
+					comment: $scope.comment.comment
+				}
+			onSuccessItem: (item, response, status, headers) ->
+				$scope.task.comments.push(response)
+		}
+
+		$scope.comment = {}
 
 		Task.get {project_id: $routeParams.project_id, id: $routeParams.id}, (data) ->
 			$scope.task = data
@@ -22,4 +41,18 @@
 				project_id: task.project_id
 			}, -> 
 				$location.path('/')
+
+		$scope.addComment = () ->
+			$scope.uploader.uploadAll()
+
+		$scope.removeComment = (comment) ->
+			Comment.remove {
+				project_id: $scope.task.project_id
+				task_id: $scope.task.id
+				id: comment.id
+			}, 
+				->
+					index = $scope.task.comments.indexOf(comment)
+					$scope.task.comments.splice(index, 1)
+
 ]

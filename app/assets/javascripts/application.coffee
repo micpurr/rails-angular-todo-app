@@ -7,7 +7,7 @@
 ##
 ##  Bootstrap libs
 ##
-//= require bootstrap-sprockets
+# require bootstrap-sprockets
 
 ##
 ##  Other

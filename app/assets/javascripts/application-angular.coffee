@@ -6,6 +6,7 @@
 //= require angular-route
 //= require angular-rails-templates
 //= require angular-devise
+//= require angularjs-file-upload
 
 ##
 ##  Configs

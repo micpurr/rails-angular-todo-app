@@ -23,6 +23,7 @@ en:
       user: "user"
       project: "project"
       task: "task"
+      comment: "comment"
     attributes:
       project:
         name: "name"
@@ -36,3 +37,7 @@ en:
         password: "password"
         password_confirmation: "password confirmation"
         created_at: "created at"
+      comment:
+        title: "title"
+        comment: "comment"
+        file: "attachment"

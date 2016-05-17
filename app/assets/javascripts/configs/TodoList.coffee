@@ -11,6 +11,7 @@
 	'ngResource'
 	'Devise'
 	'templates'
+	'angularFileUpload'
 ]
 
 ##

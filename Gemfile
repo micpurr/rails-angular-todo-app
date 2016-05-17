@@ -37,16 +37,14 @@ source 'https://rubygems.org'
 ############
 
 ############ => MODEL
-	# => Use cocoon gem for work with nested data
-	# gem 'cocoon'
-	# => Use russian gem for translate DateTime and some base translations
-	# gem 'russian'
 	# => Gem For preprocess Images
 	gem 'rmagick'
 	# => Gem for uploading Images
 	gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
-	
+	# => Gem for sorting tasks
 	gem 'acts_as_list'
+	# => Gem for commenting tasks
+	gem 'acts_as_commentable'
 ############
 
 ############ => CONTROLER

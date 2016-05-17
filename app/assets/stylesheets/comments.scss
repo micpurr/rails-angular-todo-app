@@ -1,0 +1,15 @@
+.comment-list {
+	position: relative;
+	padding-bottom: 15px;
+	border-bottom: 1px solid rgba(51,51,51, .2);
+
+	&:last-child{
+		border-bottom: none;
+	}
+
+	& > .comment-actions{
+		position: absolute;
+		right: 0;
+		top: -16px;
+	}
+}

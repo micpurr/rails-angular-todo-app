@@ -12,4 +12,7 @@
 			method: "POST"
 			url: '/api/tasks/:id/change_priority'
 			isArray: true
+		'comments':
+			method: "GET"
+			url: '/api/comments'
 ]
