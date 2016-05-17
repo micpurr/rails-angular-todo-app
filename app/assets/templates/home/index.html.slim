@@ -20,7 +20,7 @@
 						.input-group
 							span.input-group-btn
 								a.btn.text-success 
-									span.glyphicon.glyphicon-plus aria-hidden="true" dp=""
+									span.glyphicon.glyphicon-plus aria-hidden="true" pickadate="" pickadate-model="project.task" pickadate-new-position="true"
 
 							input.form-control ng-model="project.task.name" placeholder==lc('messages.forms.models.task.new_task_input') type="text" /
 
@@ -31,17 +31,18 @@
 				.table-responsive
 					table.table.table-bordered.table-task.table-hover
 						tbody
-							tr ng-repeat='task in project.tasks' ng-mouseover="isHoverTask = true" ng-mouseleave="isHoverTask = false"
+							tr ng-repeat='task in project.tasks' ng-mouseover="isHoverTask = true" ng-mouseleave="isHoverTask = false" ng-class="{'success': task.done}"
 								td.done
-									input type="checkbox" value="{{ task.done }}" ng-click="toggleTaskDone(task)"
+									input type="checkbox" ng-model="task.done" ng-click="toggleTaskDone(task)"
 								td
-									| {{ task.name }}
+									a.show href='/projects/{{project.id}}/tasks/{{task.id}}'
+										| {{ task.name }}
 								td.dedline-days-left
 									| {{ task.get_deadline_days_left }}
 								td.actions
 									a ng-click='increaseTaskPriority(task)' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-sort aria-hidden="true"
-									a href="projects/{{ project.id }}/tasks/{{ task.id }}" ng-show='isHoverTask'
+									a href="projects/{{ project.id }}/tasks/{{ task.id }}/edit" ng-show='isHoverTask'
 										span.glyphicon.glyphicon-pencil aria-hidden="true"
 									a ng-click='removeTask(task)' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-trash aria-hidden="true"
