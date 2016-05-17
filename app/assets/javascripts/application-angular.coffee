@@ -15,6 +15,11 @@
 //= require configs/routes
 
 ##
+##  Services
+##
+//= require_tree ./services
+
+##
 ##  Directives
 ##
 //= require_tree ./directives
