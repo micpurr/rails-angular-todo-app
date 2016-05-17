@@ -15,6 +15,11 @@
 //= require configs/routes
 
 ##
+##  Directives
+##
+//= require_tree ./directives
+
+##
 ##  Factories
 ##
 //= require_tree ./factories

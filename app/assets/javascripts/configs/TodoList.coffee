@@ -96,22 +96,3 @@
 					##
 					$location.path '/'
 ]
-
-@application.directive 'pickadate', [ ->
-	{
-		restrict: 'AE'
-		scope: 
-			dpmodel: '=pickadateModel'
-		link: (scope, elem, attrs) ->
-			position = null
-			if attrs.pickadateNewPosition
-				position = $(elem).parents('.panel-new-task')
-
-			$(elem).pickadate
-				container: position
-				onSet: (contex) ->
-					if scope.dpmodel == undefined
-						scope.dpmodel = {}
-					scope.dpmodel.deadline = new Date(contex.select)
-	}
-]
