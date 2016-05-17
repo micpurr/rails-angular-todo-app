@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
 	##  Relations
 	##
 	belongs_to :project
+	acts_as_list scope: :project
 
 	##
 	##  Methods
@@ -13,6 +14,14 @@ class Task < ActiveRecord::Base
 		else
 			0
 		end
+	end
+
+	def next
+		Task.order(:position).where("position > ?", position).first
+	end
+
+	def prev
+		Task.order(:position).where("position < ?", position).last
 	end
 
 	##

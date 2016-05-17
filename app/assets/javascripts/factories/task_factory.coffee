@@ -8,4 +8,8 @@
 		{ id: '@id' }, 
 		'update': 
 			method: 'PUT'
+		'changePriority':
+			method: "POST"
+			url: '/api/tasks/:id/change_priority'
+			isArray: true
 ]

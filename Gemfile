@@ -45,6 +45,8 @@ source 'https://rubygems.org'
 	gem 'rmagick'
 	# => Gem for uploading Images
 	gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+	
+	gem 'acts_as_list'
 ############
 
 ############ => CONTROLER

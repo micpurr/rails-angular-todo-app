@@ -48,9 +48,15 @@
 					$scope.addTaskToProject(task)
 					project.task = {}
 
-		$scope.increaseTaskPriority = (task) ->
-			# TODO: Create priority increase
-		
+		$scope.changeTaskPriority = (project, task, direction) ->
+			Task.changePriority {
+				id: task.id
+				project_id: task.project_id
+				change_priority: direction
+			}, task,
+				(editedTasks) ->
+					project.tasks = editedTasks
+
 		$scope.toggleTaskDone = (task) ->
 			Task.update {
 				id: task.id

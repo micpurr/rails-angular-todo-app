@@ -14,7 +14,9 @@ Rails.application.routes.draw do
 		##
 		resources :tasks, 
 			defaults: {format: :json}, 
-			except: [:new, :edit, :index]
+			except: [:new, :edit, :index] do
+			post 'change_priority' => 'tasks#change_priority'
+		end
 	end
 
 	##

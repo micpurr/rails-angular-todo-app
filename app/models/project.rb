@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
 	##
 	##  Relations
 	##
-	has_many :tasks, dependent: :delete_all
+	has_many :tasks, -> { order(position: :asc) }, dependent: :delete_all
 
 	##
 	##  Validations

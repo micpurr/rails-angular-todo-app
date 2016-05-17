@@ -14,3 +14,4 @@
 ##
 //= require picker
 //= require picker.date
+//= require underscore

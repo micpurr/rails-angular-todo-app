@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160515092836) do
     t.string   "name",       limit: 255,                 null: false
     t.boolean  "done",                   default: false
     t.date     "deadline"
-    t.integer  "priority"
+    t.integer  "position",               default: 0
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
   end

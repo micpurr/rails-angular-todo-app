@@ -40,12 +40,19 @@
 								td.dedline-days-left
 									| {{ task.get_deadline_days_left }}
 								td.actions
-									a ng-click='increaseTaskPriority(task)' href='' ng-show='isHoverTask'
-										span.glyphicon.glyphicon-sort aria-hidden="true"
+									.btn-group-vertical.icon-group
+										a ng-click='changeTaskPriority(project, task, "up")' href='' ng-show='isHoverTask'
+											span.glyphicon.glyphicon-triangle-top aria-hidden="true"
+										hr ng-show='isHoverTask'
+										a ng-click='changeTaskPriority(project, task, "down")' href='' ng-show='isHoverTask'
+											span.glyphicon.glyphicon-triangle-bottom aria-hidden="true"
 									a href="projects/{{ project.id }}/tasks/{{ task.id }}/edit" ng-show='isHoverTask'
 										span.glyphicon.glyphicon-pencil aria-hidden="true"
 									a ng-click='removeTask(task)' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-trash aria-hidden="true"
+
+								td
+									| {{ task.position }}
 
 			.add-new-project-btn
 				a.btn.btn-primary href='projects/new'
