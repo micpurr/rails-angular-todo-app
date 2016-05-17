@@ -11,7 +11,7 @@
 		if $routeParams.id
 			$scope.isNew = false
 			$scope.action = "<%= lc('actions.edit') %>"
-			Project.get {project_id: $routeParams.project_id, id: $routeParams.id}, (data) ->
+			Project.get {id: $routeParams.id}, (data) ->
 				$scope.project = data
 		else
 			$scope.isNew = true
