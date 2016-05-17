@@ -1,4 +1,4 @@
-.container#gg
+.container
 	.row
 		div.panel-project class==form_size
 			.panel.panel-primary ng-repeat='project in projects'
@@ -10,11 +10,11 @@
 					.actions.pull-right ng-show='isHoverProjectName'
 						a href='projects/{{ project.id }}/edit'
 							span.glyphicon.glyphicon-pencil aria-hidden="true"
-						a ng-click='removeProject(project)' href=''
+						a ng-click='Project.remove(projects, project)' href=''
 							span.glyphicon.glyphicon-trash aria-hidden="true"
 
 				.panel-new-task ng-class="{'add-border-radius': project.tasks.length == 0}"
-					form ng-submit='newTask(project)'
+					form ng-submit='Task.create(projects, project)'
 						input type='hidden' value="{{ project.id }}" ng-model="project.task.project_id"
 
 						.input-group
@@ -33,20 +33,20 @@
 						tbody
 							tr ng-repeat='task in project.tasks' ng-mouseover="isHoverTask = true" ng-mouseleave="isHoverTask = false" ng-class="{'success': task.done}"
 								td.done
-									input type="checkbox" ng-model="task.done" ng-click="toggleTaskDone(task)"
+									input type="checkbox" ng-model="task.done" ng-click="Task.toggleDone(task)"
 								td
 									a.show href='/projects/{{project.id}}/tasks/{{task.id}}'
 										| {{ task.name }}
 								td.actions
 									.btn-group-vertical.icon-group
-										a ng-click='changeTaskPriority(project, task, "up")' href='' ng-show='isHoverTask'
+										a ng-click='Task.changePriority(project, task, "up")' href='' ng-show='isHoverTask'
 											span.glyphicon.glyphicon-triangle-top aria-hidden="true"
 										hr ng-show='isHoverTask'
-										a ng-click='changeTaskPriority(project, task, "down")' href='' ng-show='isHoverTask'
+										a ng-click='Task.changePriority(project, task, "down")' href='' ng-show='isHoverTask'
 											span.glyphicon.glyphicon-triangle-bottom aria-hidden="true"
 									a href="projects/{{ project.id }}/tasks/{{ task.id }}/edit" ng-show='isHoverTask'
 										span.glyphicon.glyphicon-pencil aria-hidden="true"
-									a ng-click='removeTask(task)' href='' ng-show='isHoverTask'
+									a ng-click='Task.remove(projects, task)' href='' ng-show='isHoverTask'
 										span.glyphicon.glyphicon-trash aria-hidden="true"
 
 			.add-new-project-btn
