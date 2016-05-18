@@ -54,7 +54,25 @@
 						#  !!!Parent model mast have array "comments"
 						#
 						onSuccessItem: (item, response, status, headers) ->
+							#
+							#  add comment to scope
+							#
 							scope.model.comments.push response
+
+							#
+							#  Clear scope for new comment
+							#
+							scope.newComment = {}
+
+							#
+							#  Clear uploader
+							#
+							scope.uploader.clearQueue()
+
+							#
+							#  Clear file name in input
+							#
+							$("#file").val(null)
 					}
 
 					#
