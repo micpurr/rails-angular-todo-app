@@ -6,7 +6,7 @@ class ProjectsController < ApplicationController
 	#  GET /api/projects.json
 	#
 	def index
-		@projects = current_user.projects
+		@projects = current_user.projects.order("created_at ASC")
 
 		respond_to do |format|
 			format.json { render :index }

@@ -10,7 +10,8 @@
 @application.directive 'comments', [ 
 	'FileUploader'
 	'CommentProvider'
-	(FileUploader, CommentProvider) ->
+	'notify'
+	(FileUploader, CommentProvider, notify) ->
 		{
 			restrict: 'EA'
 			scope:
@@ -44,7 +45,7 @@
 							#  Combine comment params and parent object params
 							#
 							params = angular.extend( scope.modelParams, scope.newComment )
-
+							
 							#
 							#  Add params for send
 							#
@@ -74,6 +75,26 @@
 							#  Clear file name in input
 							#
 							$("#file").val(null)
+
+						#
+						#  If comment dont create
+						#
+						onErrorItem: (item, response, status, headers) ->
+							#
+							#  Clear uploader
+							#
+							scope.uploader.clearQueue()
+
+							#
+							#  Clear file name in input
+							#
+							$("#file").val(null)
+
+							#
+							#  Show errors
+							#
+							notify.showObjectArray response
+							return
 					}
 
 					#

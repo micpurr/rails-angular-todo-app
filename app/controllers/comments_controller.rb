@@ -19,14 +19,24 @@ class CommentsController < ApplicationController
 	#  POST /api/comments.json
 	#
 	def create
-		@comment = current_user.
-			projects.find(params['project_id']).
-			tasks.find(params['task_id']).
-			comments.new({ 
-				title: params[:title], 
-				comment: params[:comment], 
-				file: params[:file]
-			})
+		if params[:file].present?
+			@comment = current_user.
+				projects.find(params['project_id']).
+				tasks.find(params['task_id']).
+				comments.new({ 
+					title: params[:title], 
+					comment: params[:comment], 
+					file: params[:file]
+				})
+		else
+			@comment = current_user.
+				projects.find(params['project_id']).
+				tasks.find(params['task_id']).
+				comments.new({ 
+					title: params[:comment][:title], 
+					comment: params[:comment][:comment], 
+				})
+		end
 
 		respond_to do |format|
 			if @comment.save
