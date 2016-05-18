@@ -1,17 +1,19 @@
-##
-##  jQuery
-##
+#
+#  jQuery
+#
 //= require jquery
 //= require jquery_ujs
 
-##
-##  Bootstrap libs
-##
+#
+#  Bootstrap libs
+#
 # require bootstrap-sprockets
+//= require bootstrap/dropdown
 
-##
-##  Other
-##
+#
+#  Other
+#
 //= require picker
 //= require picker.date
 //= require underscore
+//= require snackbar.min
