@@ -5,8 +5,9 @@
 	'$scope'
 	'Auth'
 	'$location'
-	"$rootScope"
-	($scope, Auth, $location, $rootScope) ->
+	'$rootScope'
+	'notify'
+	($scope, Auth, $location, $rootScope, notify) ->
 		#
 		#  Func for login user
 		#
@@ -36,12 +37,18 @@
 					isAuth: true
 
 				#
+				#  Show login message
+				#
+				notify.show("<%= lc('devise.sessions.signed_in') %>")
+
+				#
 				#  Redirect after authenticate
 				#  to home page
 				#
 				$location.path '/' 
 			), (error) ->
-				console.log error
+				notify.show(error.data.error)
+				return
 
 		#
 		#  Func for logout user
@@ -62,11 +69,16 @@
 				$rootScope.globals = isAuth: false
 
 				#
+				#  Show logout message
+				#
+				notify.show("<%= lc('devise.sessions.signed_out') %>")
+
+				#
 				#  Redirect to login page
 				#
 				$location.path '/login' 
 			), (error) ->
-				console.log error 
+				notify.show(error.data.error)
 
 		#
 		#  Func for Sign Up user
@@ -98,10 +110,15 @@
 					isAuth: true
 
 				#
+				#  Show sign up message
+				#
+				notify.show("<%= lc('devise.registrations.signed_up') %>")
+
+				#
 				#  Redirect after authenticate
 				#  to home page
 				#
 				$location.path '/' 
 			), (error) ->
-				console.log error
+				notify.showObjectArray error.data.errors, false
 ]

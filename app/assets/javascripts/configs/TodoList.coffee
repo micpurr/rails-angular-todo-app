@@ -95,4 +95,8 @@
 					#  Redirect to home page
 					#
 					$location.path '/'
+			# $rootScope.$on '$locationChangeSuccess', (event, next, current) ->
+			# 	$.snackbar 
+			# 		content: "sdfsdf"
+			# 	return
 ]

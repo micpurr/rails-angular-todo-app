@@ -9,6 +9,7 @@
 @import "comments";
 @import "classic";
 @import "classic.date";
+@import "snackbar";
 
 body {
 	display: flex;
@@ -35,5 +36,21 @@ main {
 .btn-group {
 	& > .btn {
 		min-width: 100px;
+	}
+}
+
+.snackbar-content {
+	& > div {
+		border-bottom: 1px solid #565656;
+		margin-bottom: 10px;
+		padding: 0 20px;
+		& > ul {
+			margin-left: -20px;
+		}
+	}
+
+	& > div:last-child {
+		margin: 0;
+		border-bottom: none;
 	}
 }

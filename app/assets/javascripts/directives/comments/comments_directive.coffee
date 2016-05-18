@@ -42,7 +42,7 @@
 							#
 							#  Combine comment params and parent object params
 							#
-							params = $.extend( scope.modelParams, scope.newComment )
+							params = angular.extend( scope.modelParams, scope.newComment )
 
 							#
 							#  Add params for send
