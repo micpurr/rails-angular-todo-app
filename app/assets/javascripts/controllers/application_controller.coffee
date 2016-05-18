@@ -4,13 +4,7 @@
 @application.controller 'ApplicationController', [ 
 	'$scope'
 	'ProjectProvider'
-	'TaskProvider'
-	($scope, ProjectProvider, TaskProvider) ->
-		#
-		#  TaskProvider for managing tasks
-		#
-		$scope.Task = TaskProvider
-
+	($scope, ProjectProvider) ->
 		#
 		#  ProjectProvider for managing projects
 		#
@@ -26,10 +20,4 @@
 		#  actions in project title
 		#
 		$scope.isHoverProjectName = false
-
-		#
-		#  Variable store state of showing
-		#  actions on task hover
-		#
-		$scope.isHoverTask = false
 ]

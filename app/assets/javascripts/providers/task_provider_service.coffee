@@ -53,9 +53,9 @@
 			#  Create empty Task resource and
 			#
 			task = new Task
-				name: project.task.name, 
+				name: project.newTask.name, 
 				project_id: project.id,
-				deadline: project.task.deadline
+				deadline: project.newTask.deadline
 
 			#
 			#  POST request for create task
@@ -71,7 +71,7 @@
 				#
 				#  clear scope for new task
 				#
-				project.task = {}
+				project.newTask = {}
 			return
 
 		#
