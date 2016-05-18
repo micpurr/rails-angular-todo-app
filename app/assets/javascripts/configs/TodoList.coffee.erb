@@ -81,6 +81,7 @@
 				#  cheking before every request
 				#
 				if !$rootScope.globals.user and url != login_path and url != sign_up_path
+					notify.show("<%= lc('messages.user.not_login') %>")
 					#
 					#  Redirect to login page
 					#

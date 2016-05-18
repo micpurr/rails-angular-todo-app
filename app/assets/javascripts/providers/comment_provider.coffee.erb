@@ -1,0 +1,92 @@
+#
+#  Service for manipulating scope data
+#
+@application.factory 'CommentProvider', [
+	'$rootScope'
+	'Comment'
+	'Helpers'
+	'notify'
+	($rootScope, Comment, Helpers, notify) ->
+		#
+		#  Comments holder
+		#
+		comment = {}
+
+		#
+		#  Create comment in DB
+		#  
+		#  params:
+		#    scopeTask: <object>
+		#      - object what have a comment
+		#    comment: <object>
+		#      - comment object what will be remove
+		#  
+		#  return: null
+		#  
+		comment.create = (scopeTask, comment) ->
+			#
+			#  success collback
+			#
+			success = (response) ->
+				#
+				#  Add comment to scope
+				#
+				scopeTask.comments.push response
+				return
+
+			#
+			#  error collback
+			#
+			error = (response) ->
+				notify.showObjectArray response.data
+				return
+
+			#
+			#  POST request for create users comment for task
+			#
+			Comment.save {
+				project_id: scopeTask.project_id
+				task_id: scopeTask.id
+			}, comment, success, error
+			return
+
+		#
+		#  Remove comment from DB
+		#  
+		#  params:
+		#    scopeTask: <object>
+		#      - object what have a comment
+		#    comment: <object>
+		#      - comment object what will be remove
+		#  
+		#  return: null
+		#  
+		comment.remove = (scopeTask, comment) ->
+			#
+			#  success collback
+			#
+			success = ->
+				#
+				#  Removing comment from scope
+				#
+				Helpers.removeRecordByField scopeTask.comments, comment.id
+
+			error = (error) ->
+				notify.show("<%= lc("messages.record.errors.dont_delete")%>")
+
+			#
+			#  DELETE request for remove users comment for task
+			#
+			Comment.remove {
+				project_id: scopeTask.project_id
+				task_id: scopeTask.id
+				id: comment.id
+			}, success, error
+
+			return
+
+		#
+		#  return comment provider
+		#
+		return comment
+]

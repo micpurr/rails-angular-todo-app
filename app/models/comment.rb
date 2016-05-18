@@ -25,4 +25,12 @@ class Comment < ActiveRecord::Base
 			url: file.url
 		}
 	end
+
+	#
+	#  Validations
+	#
+	validates_presence_of :title
+	validates_length_of :title, within: 2..50
+	validates_presence_of :comment
+	validates_length_of :comment, minimum: 3
 end

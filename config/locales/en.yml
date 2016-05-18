@@ -13,8 +13,12 @@ en:
       logout: "logout"
       sign_up: "sign up"
   messages:
+    record:
+      errors:
+        dont_delete: "unknown error on deleting"
     user:
       already_login: "you are already login"
+      not_login: "you need to login for using application"
     forms:
       models:
         task:

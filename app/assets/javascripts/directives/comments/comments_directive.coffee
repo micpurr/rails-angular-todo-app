@@ -9,7 +9,8 @@
 #
 @application.directive 'comments', [ 
 	'FileUploader'
-	(FileUploader) ->
+	'CommentProvider'
+	(FileUploader, CommentProvider) ->
 		{
 			restrict: 'EA'
 			scope:
@@ -79,6 +80,23 @@
 					#  Create Comment
 					#
 					scope.createComment = ->
-						scope.uploader.uploadAll()
+						#
+						#  Check if file setted
+						#
+						if scope.uploader.queue.length > 0
+							#
+							#  Create comment with file
+							#
+							scope.uploader.uploadAll()
+						else
+							#
+							#  Create comment if file dont set
+							#
+							CommentProvider.create(scope.model, scope.newComment)
+
+							#
+							#  Clear newComment object
+							#
+							scope.newComment = {}
 		}
 ]
