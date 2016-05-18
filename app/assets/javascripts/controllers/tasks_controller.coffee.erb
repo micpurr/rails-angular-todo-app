@@ -4,18 +4,38 @@
 @application.controller 'TasksController', [ 
 	'$scope'
 	'$routeParams' 
-	'Task'
-	'$location'
 	'FileUploader'
-	'Comment'
-	($scope, $routeParams, Task, $location, FileUploader, Comment) ->
+	'CommentProvider'
+	'TaskProvider'
+	($scope, $routeParams, FileUploader, CommentProvider, TaskProvider) ->
+		#
+		#  CommentProvider for managing comments
+		#
+		$scope.Comment = CommentProvider
 
-		$scope.action = "<%= lc('actions.edit') %>"
+		#
+		#  TaskProvider for managing tasks
+		#
+		$scope.Task = TaskProvider
 
+		#
+		#  Init uploader for file
+		#
 		$scope.uploader = new FileUploader {
+			#
+			#  URL for request
+			#
 			url: '/api/comments' 
+
+			#
+			#  Set token
+			#
 			headers: 
-				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute 'content'
+
+			#
+			#  Set date of comment to send data
+			#
 			onBeforeUploadItem: (item)->
 				item.formData.push {
 					project_id: $scope.task.project_id
@@ -23,36 +43,42 @@
 					title: $scope.comment.title
 					comment: $scope.comment.comment
 				}
+
+			#
+			#  After success add comment push they to task
+			#
 			onSuccessItem: (item, response, status, headers) ->
-				$scope.task.comments.push(response)
+				$scope.task.comments.push response
 		}
 
+		#
+		#  Varaible for store new comment
+		#
 		$scope.comment = {}
 
-		Task.get {project_id: $routeParams.project_id, id: $routeParams.id}, (data) ->
+		#
+		#  Get current task from db
+		#
+		$scope.Task.get $routeParams, (data) ->
+			#
+			#  Set task to scope
+			#
 			$scope.task = data
-			$scope.task.deadline = new Date($scope.task.deadline)
+
+			#
+			#  Convert deadline to date from string
+			#
+			$scope.task.deadline = new Date $scope.task.deadline
+
+			#
+			#  Cheking action and set date if action EDIT
+			#
 			if $routeParams.action == 'edit'
-				$("#deadline").pickadate('picker').set('select', $scope.task.deadline)
+				$("#deadline").pickadate('picker').set 'select', $scope.task.deadline
 
-		$scope.formTask = (task) ->
-			task.$update {
-				id: task.id
-				project_id: task.project_id
-			}, -> 
-				$location.path('/')
-
-		$scope.addComment = () ->
+		#
+		#  Add comment to db
+		#
+		$scope.addComment = ->
 			$scope.uploader.uploadAll()
-
-		$scope.removeComment = (comment) ->
-			Comment.remove {
-				project_id: $scope.task.project_id
-				task_id: $scope.task.id
-				id: comment.id
-			}, 
-				->
-					index = $scope.task.comments.indexOf(comment)
-					$scope.task.comments.splice(index, 1)
-
 ]

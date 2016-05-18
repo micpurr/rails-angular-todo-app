@@ -1,8 +1,8 @@
 .container
 	.row
 		.well class==form_size
-			form ng-submit='formTask(task)'
-				h1.text-center == "{{ action }} " + lc("activerecord.models.task")
+			form ng-submit='Task.update(task)'
+				h1.text-center == lc('actions.edit') + " " + lc("activerecord.models.task")
 
 				.form-group
 					label for="name" ==lc("activerecord.attributes.task.name")

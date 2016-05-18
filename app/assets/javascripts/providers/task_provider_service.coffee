@@ -5,7 +5,8 @@
 	'$rootScope'
 	'Task'
 	'Helpers'
-	($rootScope, Task, Helpers) ->
+	'$location'
+	($rootScope, Task, Helpers, $location) ->
 		#
 		#  Tasks holder
 		#
@@ -70,6 +71,47 @@
 				#  clear scope for new task
 				#
 				project.task = {}
+			return
+
+		#
+		#  Update task in DB
+		#  
+		#  params:
+		#    task: <Task:ngResource>
+		#
+		#  return: redirect to root page
+		#
+		task.update = (task) ->
+			#
+			#  POST request for create project
+			#
+			task.$update {
+				id: task.id
+				project_id: task.project_id
+			}, -> 
+				#
+				#  redirect to root page
+				#
+				$location.path '/'
+
+		#
+		#  Get task of user by id
+		#  
+		#  params: 
+		#    routeParams: <object>
+		#      - id of project what have task 
+		#      - id of task what need to get
+		#    successCallback: <function>
+		#      - callback after success get
+		#  
+		#  return: null
+		#
+		task.get = (routeParams, successCallback) ->
+			Task.get {
+				project_id: routeParams.project_id
+				id: routeParams.id
+			}, (data) ->
+				successCallback data
 			return
 
 		#
