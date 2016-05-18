@@ -1,3 +1,12 @@
+#
+#  Directive form managing comments
+#  
+#  params:
+#    parent-model: <model:ngResource>
+#      - model which have comments array
+#    parent-model-params: <object>
+#      - params for find parent model in DB
+#
 @application.directive 'comments', [ 
 	'FileUploader'
 	(FileUploader) ->
@@ -53,8 +62,5 @@
 					#
 					scope.createComment = ->
 						scope.uploader.uploadAll()
-
-			link: (scope, elem, attrs) ->
-				return
 		}
 ]
