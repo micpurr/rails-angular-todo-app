@@ -4,10 +4,9 @@
 @application.controller 'TasksController', [ 
 	'$scope'
 	'$routeParams' 
-	'FileUploader'
 	'CommentProvider'
 	'TaskProvider'
-	($scope, $routeParams, FileUploader, CommentProvider, TaskProvider) ->
+	($scope, $routeParams, CommentProvider, TaskProvider) ->
 		#
 		#  CommentProvider for managing comments
 		#
@@ -18,38 +17,38 @@
 		#
 		$scope.Task = TaskProvider
 
-		#
-		#  Init uploader for file
-		#
-		$scope.uploader = new FileUploader {
-			#
-			#  URL for request
-			#
-			url: '/api/comments' 
+		# #
+		# #  Init uploader for file
+		# #
+		# $scope.uploader = new FileUploader {
+		# 	#
+		# 	#  URL for request
+		# 	#
+		# 	url: '/api/comments' 
 
-			#
-			#  Set token
-			#
-			headers: 
-				'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute 'content'
+		# 	#
+		# 	#  Set token
+		# 	#
+		# 	headers: 
+		# 		'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute 'content'
 
-			#
-			#  Set date of comment to send data
-			#
-			onBeforeUploadItem: (item)->
-				item.formData.push {
-					project_id: $scope.task.project_id
-					task_id: $scope.task.id
-					title: $scope.comment.title
-					comment: $scope.comment.comment
-				}
+		# 	#
+		# 	#  Set date of comment to send data
+		# 	#
+		# 	onBeforeUploadItem: (item)->
+		# 		item.formData.push {
+		# 			project_id: $scope.task.project_id
+		# 			task_id: $scope.task.id
+		# 			title: $scope.comment.title
+		# 			comment: $scope.comment.comment
+		# 		}
 
-			#
-			#  After success add comment push they to task
-			#
-			onSuccessItem: (item, response, status, headers) ->
-				$scope.task.comments.push response
-		}
+		# 	#
+		# 	#  After success add comment push they to task
+		# 	#
+		# 	onSuccessItem: (item, response, status, headers) ->
+		# 		$scope.task.comments.push response
+		# }
 
 		#
 		#  Varaible for store new comment
@@ -66,6 +65,13 @@
 			$scope.task = data
 
 			#
+			#  Params for sending with comment when comment is creating
+			#
+			$scope.task.sendParams = 
+				project_id: $scope.task.project_id 
+				task_id: $scope.task.id
+
+			#
 			#  Convert deadline to date from string
 			#
 			$scope.task.deadline = new Date $scope.task.deadline
@@ -80,5 +86,5 @@
 		#  Add comment to db
 		#
 		$scope.addComment = ->
-			$scope.uploader.uploadAll()
+			# $scope.uploader.uploadAll()
 ]

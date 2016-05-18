@@ -26,41 +26,5 @@
 			.btn-group.pull-right role="group"
 				a.btn.btn-default href="/" ==lc("actions.cansel")
 				a.btn.btn-primary href="projects/{{ task.project_id }}/tasks/{{ task.id }}/edit" ==lc("actions.edit")
-	
-	.row
-		h1.text-center ==lc('activerecord.models.comment').pluralize
 
-		.well class==form_size
-			form ng-submit='addComment()'
-				h3.text-center
-					== lc('actions.new') + " " + lc('activerecord.models.comment')
-
-				.form-group
-					label for="title" ==lc("activerecord.attributes.comment.title")
-					input#title.form-control placeholder==lc("activerecord.attributes.comment.title") type="text" ng-model='comment.title'/
-
-				.form-group
-					label for="comment" ==lc("activerecord.attributes.comment.comment")
-					textarea#comment class="form-control" rows="3" placeholder==lc("activerecord.attributes.comment.comment") ng-model='comment.comment'
-
-				.form-group
-					input type="file" nv-file-select="" ng-model='comment' uploader="uploader"/
-
-				.btn-group.pull-right role="group"
-					a.btn.btn-default href="/" ==lc('actions.cansel')
-					button.btn.btn-primary type="submit" ==lc('actions.submit')
-
-	.row ng-show="task.comments.length > 0"
-		.well class==form_size 
-			div.comment-list ng-repeat="comment in task.comments"
-				h2 hg-show="comment.title.length > 0"
-					| {{comment.title}}
-				p hg-show="comment.comment.length > 0"
-					| {{comment.comment}}
-				div ng-show="comment.get_file.url != undefined"
-					h4 
-						==lc("activerecord.attributes.comment.file") + ": "
-						a href="{{comment.get_file.url}}" {{comment.get_file.file_name}}
-				.comment-actions
-					a href="" ng-click="Comment.remove(task, comment)"
-						span.glyphicon.glyphicon-remove.text-danger aria-hidden="true"
+comments parent-model="task" parent-model-params="task.sendParams"

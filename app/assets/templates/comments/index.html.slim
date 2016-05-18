@@ -1,0 +1,24 @@
+.row
+	h1.text-center ==lc('activerecord.models.comment').pluralize
+
+	.well class==form_size
+		form ng-submit='createComment()'
+			h3.text-center
+				== lc('actions.new') + " " + lc('activerecord.models.comment')
+
+			.form-group
+				label for="title" ==lc("activerecord.attributes.comment.title")
+				input#title.form-control placeholder==lc("activerecord.attributes.comment.title") type="text" ng-model='newComment.title'/
+
+			.form-group
+				label for="comment" ==lc("activerecord.attributes.comment.comment")
+				textarea#comment class="form-control" rows="3" placeholder==lc("activerecord.attributes.comment.comment") ng-model='newComment.comment'
+
+			.form-group
+				input type="file" nv-file-select="" ng-model='newComment' uploader="uploader"/
+
+			.btn-group.pull-right role="group"
+				a.btn.btn-default href="/" ==lc('actions.cansel')
+				button.btn.btn-primary type="submit" ==lc('actions.submit')
+
+render-comments parent-model="model"
