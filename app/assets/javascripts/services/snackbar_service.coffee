@@ -27,6 +27,35 @@
 			return
 
 		#
+		#  Show snackbar with message with model
+		#  
+		#  params:
+		#    model: <string>
+		#      - model name which need to show
+		#    action: <string>
+		#      - current action
+		#    name(optional): <string>
+		#      - name of record
+		#    timeout(optional): <integer:milliseconds>
+		#      - how long snack bar will be shown
+		#      
+		#  return: null
+		#
+		snackbar.showModelMessage = (model, action, name=null, timeout=5000) ->
+			if name != null
+				$.snackbar
+					content: "#{model} #{action}: \"#{name}\""
+					timeout: timeout
+					htmlAllowed: true
+				return
+			else
+				$.snackbar
+					content: "#{model} #{action}"
+					timeout: timeout
+					htmlAllowed: true
+				return
+
+		#
 		#  Show snackbar with array of messages
 		#  
 		#  params:

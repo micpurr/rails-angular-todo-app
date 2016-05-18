@@ -30,6 +30,12 @@
 			#
 			success = ->
 				#
+				#  notify succese message
+				#
+				notify.showModelMessage "<%= lc('activerecord.models.task') %>", 
+					"<%= lc('actions.delete') %>"
+				
+				#
 				#  Removing task from scope
 				#
 				Helpers.removeRecordFromSubCollection scope, task.project_id, 'tasks', task
@@ -65,7 +71,14 @@
 			#
 			#  success callback
 			#
-			success = (responce) ->
+			success = (response) ->
+				#
+				#  notify succese message
+				#
+				notify.showModelMessage "<%= lc('activerecord.models.task', 'upcase') %>", 
+					"<%= lc('actions.create', 'upcase') %>", 
+					response.name
+
 				#
 				#  add task to scope
 				#
@@ -116,7 +129,10 @@
 				#
 				#  notify succese message
 				#
-				notify.show("<%= lc('activerecord.models.task', 'upcase') %>: \"#{response.name}\" <%= lc('actions.edit', 'upcase') %>")
+				notify.showModelMessage "<%= lc('activerecord.models.task', 'upcase') %>", 
+					"<%= lc('actions.edit', 'upcase') %>", 
+					response.name
+
 				#
 				#  redirect to root page
 				#

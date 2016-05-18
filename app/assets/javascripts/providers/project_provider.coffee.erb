@@ -6,7 +6,8 @@
 	'Project'
 	'Helpers'
 	'$location'
-	($rootScope, Project, Helpers, $location) ->
+	'notify'
+	($rootScope, Project, Helpers, $location, notify) ->
 		#
 		#  Project holder
 		#
@@ -53,7 +54,6 @@
 			Project.get {
 				id: id
 			}, success, error
-			return
 
 		#
 		#  Save or Update Project in depend of action
@@ -70,7 +70,19 @@
 			#
 			#  success callback
 			#
-			success = (responce) ->
+			success = (response) ->
+				#
+				#  notify succese message
+				#
+				if action
+					notify.showModelMessage "<%= lc('activerecord.models.project', 'upcase') %>", 
+					"<%= lc('actions.create', 'upcase') %>", 
+					response.name
+				else
+					notify.showModelMessage "<%= lc('activerecord.models.project', 'upcase') %>", 
+					"<%= lc('actions.edit', 'upcase') %>", 
+					response.name
+
 				#
 				#  redirect to home page
 				#
@@ -116,6 +128,11 @@
 			#  Success collback
 			#
 			success = ->
+				#
+				#  notify succese message
+				#
+				notify.showModelMessage "<%= lc('activerecord.models.project') %>", 
+					"<%= lc('actions.delete') %>"
 				#
 				#  Removing project from scope
 				#

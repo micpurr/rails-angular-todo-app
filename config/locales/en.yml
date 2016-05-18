@@ -1,5 +1,6 @@
 en:
   actions:
+    create: "create"
     edit: "edit"
     add: 'add'
     new: "new"
