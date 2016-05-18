@@ -23,5 +23,10 @@
 					#  Init TaskProvider
 					#
 					scope.Task = TaskProvider
+
+					#
+					#  Create default object of new task
+					#
+					scope.model.newTask = {}
 		}
 ]

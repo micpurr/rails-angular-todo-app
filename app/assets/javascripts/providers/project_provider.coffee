@@ -33,16 +33,27 @@
 		#
 		project.get = (id) ->
 			#
+			#  success callback
+			#
+			success = (data) ->
+				#
+				#  Set project to scope 
+				#
+				return data
+
+			#
+			#  error callback
+			#
+			error = ->
+				$location.path('/404')
+
+			#
 			#  GET request for get project
 			#
 			Project.get {
 				id: id
-			}, 
-				(data) ->
-					#
-					#  Set project to scope
-					#
-					return data
+			}, success, error
+			return
 
 		#
 		#  Save or Update Project in depend of action
@@ -56,28 +67,38 @@
 		#  return: redirect to root page
 		#
 		project.saveOrUpdate = (action, project) ->
+			#
+			#  success callback
+			#
+			success = (responce) ->
+				#
+				#  redirect to home page
+				#
+				$location.path('/')
+
+			#
+			#  error collback
+			#
+			error = (response) ->
+				notify.showObjectArray response.data
+				return
+
 			if action
 				#
 				#  POST request for create project
 				#
 				project.$save { 
 					id: project.id
-				}, -> 
-					#
-					#  redirect to root page
-					#
-					$location.path('/')
+				}, success, error
+				return
 			else
 				#
 				#  PUT request for put project
 				#
 				project.$update {
 					id: project.id
-				}, -> 
-					#
-					#  redirect to root page
-					#
-					$location.path('/')
+				}, success, error
+				return
 
 		#
 		#  Remove selected project from DB
@@ -92,15 +113,27 @@
 		#  
 		project.remove = (scope, project) ->
 			#
-			#  DELETE request for remove users project
+			#  Success collback
 			#
-			Project.remove { 
-				id: project.id 
-			}, -> 
+			success = ->
 				#
 				#  Removing project from scope
 				#
 				Helpers.removeRecordByField scope, project.id
+
+			#
+			#  error collback
+			#
+			error = (error) ->
+				notify.show("<%= lc("messages.record.errors.dont_delete")%>")
+				return
+
+			#
+			#  DELETE request for remove users project
+			#
+			Project.remove { 
+				id: project.id 
+			}, success, error
 			return
 
 		#

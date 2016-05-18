@@ -71,8 +71,12 @@
 				#
 				Helpers.removeRecordByField scopeTask.comments, comment.id
 
+			#
+			#  error callback
+			#
 			error = (error) ->
 				notify.show("<%= lc("messages.record.errors.dont_delete")%>")
+				return
 
 			#
 			#  DELETE request for remove users comment for task
