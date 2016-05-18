@@ -1,6 +1,6 @@
-##
-##  Comment factory
-##
+#
+#  Comment factory
+#
 @application.factory 'Comment', [
 	'$resource'
 	($resource) ->

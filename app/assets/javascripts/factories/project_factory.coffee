@@ -1,6 +1,6 @@
-##
-##  Project factory
-##
+#
+#  Project factory
+#
 @application.factory 'Project', [
 	'$resource'
 	($resource) ->

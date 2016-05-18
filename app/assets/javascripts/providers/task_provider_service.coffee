@@ -56,6 +56,7 @@
 				name: project.task.name, 
 				project_id: project.id,
 				deadline: project.task.deadline
+
 			#
 			#  POST request for create task
 			#
@@ -111,6 +112,9 @@
 				project_id: routeParams.project_id
 				id: routeParams.id
 			}, (data) ->
+				#
+				#  Call success callback
+				#
 				successCallback data
 			return
 

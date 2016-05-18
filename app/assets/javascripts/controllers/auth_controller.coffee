@@ -10,7 +10,7 @@
 		#
 		#  Func for login user
 		#
-		$scope.login = () ->
+		$scope.login = ->
 			#
 			#  Set header for request
 			#
@@ -46,7 +46,7 @@
 		#
 		#  Func for logout user
 		#
-		$scope.logout = () ->
+		$scope.logout = ->
 			#
 			#  Set header for request
 			#
@@ -71,7 +71,7 @@
 		#
 		#  Func for Sign Up user
 		#
-		$scope.signUp = () ->
+		$scope.signUp = ->
 			#
 			#  Set header for request
 			#
