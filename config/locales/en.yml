@@ -13,6 +13,8 @@ en:
       logout: "logout"
       sign_up: "sign up"
   messages:
+    user:
+      already_login: "you are already login"
     forms:
       models:
         task:

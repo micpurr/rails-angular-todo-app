@@ -21,7 +21,8 @@
 	'$rootScope'
 	'$location'
 	'Auth'
-	($rootScope, $location, Auth) ->
+	'notify'
+	($rootScope, $location, Auth, notify) ->
 		#
 		#  Set preloader status
 		#
@@ -91,12 +92,10 @@
 				#  and try to go to login or sign-up page
 				#
 				if $rootScope.globals.user and ( url == sign_up_path or url == login_path )
+					notify.show("<%= lc('messages.user.already_login') %>")
+
 					#
 					#  Redirect to home page
 					#
 					$location.path '/'
-			# $rootScope.$on '$locationChangeSuccess', (event, next, current) ->
-			# 	$.snackbar 
-			# 		content: "sdfsdf"
-			# 	return
 ]
