@@ -1,15 +1,26 @@
 class CommentsController < ApplicationController
+
+	#
+	#  Get all comments
+	#  GET /api/comments.json
+	#
 	def index
-		@comments = current_user.projects.find(params[:project_id]).tasks.find(params[:task_id]).comments
+		@comments = current_user.
+			projects.find(params[:project_id]).
+			tasks.find(params[:task_id]).comments
 
 		respond_to do |format|
 			format.json { render :index }
 		end
 	end
 
+	#
+	#  Create comment
+	#  POST /api/comments.json
+	#
 	def create
-		@comment = current_user.projects.
-			find(params['project_id']).
+		@comment = current_user.
+			projects.find(params['project_id']).
 			tasks.find(params['task_id']).
 			comments.new({ 
 				title: params[:title], 
@@ -26,9 +37,13 @@ class CommentsController < ApplicationController
 		end
 	end
 
+	#
+	#  Destroy comment
+	#  DELETE /api/comments/1.json
+	#
 	def destroy
-		@comment = current_user.projects.
-			find(params[:project_id]).
+		@comment = current_user.
+			projects.find(params[:project_id]).
 			tasks.find(params[:task_id]).
 			comments.find(params[:id]).destroy
 

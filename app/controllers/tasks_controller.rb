@@ -1,10 +1,17 @@
 class TasksController < ApplicationController
 	before_action :set_task, only: [:show, :update, :destroy]
 
-	# GET /api/tasks/1.json
+	#  
+	#  Get selected task
+	#  GET /api/tasks/1.json
+	#  
 	def show
 	end
 
+	#
+	#  Chenge priority of selected task
+	#  POST /api/comments/1/change_priority.json
+	#
 	def change_priority
 		task_id = params[:task_id]
 		project_id = params[:project_id]
@@ -29,7 +36,10 @@ class TasksController < ApplicationController
 		end
 	end
 
-	# POST /api/tasks.json
+	#  
+	#  Create task
+	#  POST /api/tasks.json
+	#  
 	def create
 		@task = current_user.projects.find(task_params['project_id']).tasks.new(task_params)
 
@@ -46,7 +56,10 @@ class TasksController < ApplicationController
 		end
 	end
 
-	# PATCH/PUT /api/tasks/1.json
+	# 
+	#  Update task
+	#  PATCH/PUT /api/tasks/1.json
+	#  
 	def update
 		respond_to do |format|
 			if @task.update(task_params)
@@ -57,7 +70,10 @@ class TasksController < ApplicationController
 		end
 	end
 
-	# DELETE /api/tasks/1.json
+	#  
+	#  Remove task
+	#  DELETE /api/tasks/1.json
+	#  
 	def destroy
 		@task.destroy
 		respond_to do |format|

@@ -1,41 +1,44 @@
 Rails.application.routes.draw do
-	##
-	##  API scope fore isolate url
-	##
+	#
+	#  API scope fore isolate url
+	#
 	scope 'api' do
-		##
-		##  project resource
-		##
+		#
+		#  project resource
+		#
 		resources :projects, 
 			defaults: {format: :json}, 
-			except: [:new, :edit] 
+			except: [:show, :new, :edit] 
 
-		##
-		##  task resource
-		##
+		#
+		#  task resource
+		#
 		resources :tasks, 
 			defaults: {format: :json}, 
 			except: [:new, :edit, :index] do
 			post 'change_priority' => 'tasks#change_priority'
 		end
 
+		#
+		#  comment resource
+		#
 		resources :comments,
 			defaults: {format: :json}, 
 			only: [:create, :destroy, :index]
 	end
 
-	##
-	##  Root path
-	##
+	#
+	#  Root path
+	#
 	root "application#index"
 
-	##
-	##  Devise routes
-	##
+	#
+	#  Devise routes
+	#
 	devise_for :users
 
-	##
-	##  Root angular path
-	##
+	#
+	#  Root angular path
+	#
 	match '*path' => 'application#index', via: [:get, :post]
 end
