@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 		#
 		resources :projects, 
 			defaults: {format: :json}, 
-			except: [:show, :new, :edit] 
+			except: [:new, :edit] 
 
 		#
 		#  task resource

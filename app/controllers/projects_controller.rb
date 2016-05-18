@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-	before_action :set_project, only: [:update, :destroy]
+	before_action :set_project, only: [:show, :update, :destroy]
 
 	#
 	#  Get all users project
@@ -11,6 +11,14 @@ class ProjectsController < ApplicationController
 		respond_to do |format|
 			format.json { render :index }
 		end
+	end
+
+	#
+	#  Get project
+	#  GET /api/projects/1.json
+	#
+	def show
+		
 	end
 
 	# 
