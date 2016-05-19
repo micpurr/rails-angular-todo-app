@@ -97,7 +97,7 @@
 				return
 
 			#
-			#  Create empty Task resource and
+			#  Create empty Task resource
 			#
 			task = new Task
 				name: project.newTask.name
@@ -110,7 +110,6 @@
 			task.$save {
 				project_id: project.id
 			}, success, error
-				
 			return
 
 		#

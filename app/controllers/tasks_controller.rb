@@ -67,8 +67,10 @@ class TasksController < ApplicationController
 		#
 		#  Set dedline for current date if deadline dont set
 		#
-		if @task.deadline.blank?
+		if task_params["deadline"].blank?
 			@task.deadline = Date.today
+		else
+			@task.deadline = Date.parse task_params["deadline"]
 		end
 
 		respond_to do |format|

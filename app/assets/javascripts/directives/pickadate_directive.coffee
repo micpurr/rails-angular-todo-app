@@ -46,8 +46,13 @@
 						scope.dpmodel = {}
 
 					#
+					#  Create Date object
+					#
+					date = new Date contex.select
+
+					#
 					#  set date to scope
 					#
-					scope.dpmodel.deadline = new Date contex.select
+					scope.dpmodel.deadline = "#{date.getFullYear()}-#{date.getMonth()+1}-#{date.getDate()}"
 	}
 ]

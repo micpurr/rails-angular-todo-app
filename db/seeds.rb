@@ -23,7 +23,7 @@ User.all.each do |u|
 		#  create tasks for created project
 		#
 		Random.rand(1..10).times do
-			project.tasks.create!(name: Faker::Lorem.sentence)
+			project.tasks.create!(name: Faker::Lorem.sentence, deadline: Date.today)
 		end
 
 		project.tasks.all.each do |p|
