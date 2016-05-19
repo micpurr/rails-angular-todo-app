@@ -4,12 +4,28 @@
 			form ng-submit='Task.update(task)' name='formEditTask'
 				h1.text-center == lc('actions.edit') + " " + lc("activerecord.models.task")
 
-				.form-group.has-feedback ng-class="{'has-error': formEditTask.$dirty && formEditTask.$invalid, 'has-success': formEditTask.$valid}"
+				.form-group.has-feedback ng-class="
+					{ 
+						'has-error': 
+							formEditTask.name.$dirty && 
+							formEditTask.name.$invalid, 
+						'has-success': 
+							formEditTask.name.$dirty && 
+							formEditTask.name.$valid
+					}"
 					label for="name" ==lc("activerecord.attributes.task.name")
 
-					input#name.form-control placeholder==lc("activerecord.attributes.task.name") type="text" ng-model='task.name' required="" ng-minlength="2" ng-maxlength="255"/
+					input#name.form-control placeholder==lc("activerecord.attributes.task.name") type="text" name='name' ng-model='task.name' required="" ng-minlength="2" ng-maxlength="255"/
 
-					span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="{'glyphicon-remove':formEditTask.$dirty && formEditTask.$invalid, 'glyphicon-ok':formEditTask.$dirty && formEditTask.$valid}" 
+					span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="
+						{
+							'glyphicon-remove':
+								formEditTask.name.$dirty && 
+								formEditTask.name.$invalid, 
+							'glyphicon-ok':
+								formEditTask.name.$dirty && 
+								formEditTask.name.$valid
+						}" 
 
 				.form-group
 					label for="deadline" ==lc("activerecord.attributes.task.deadline")

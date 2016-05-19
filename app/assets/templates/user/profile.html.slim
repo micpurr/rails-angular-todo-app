@@ -13,3 +13,6 @@
 					== lc('activerecord.models.user') + " " + lc('activerecord.attributes.user.created_at', :downcase) + ": "
 				| {{ globals.user.created_at | date:'MMMM dd, yyyy HH:MM' }}
 
+		.btn-group.pull-right
+			a.btn.btn-default href="/" ==lc('actions.cansel')
+

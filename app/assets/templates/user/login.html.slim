@@ -3,15 +3,54 @@
 		.well class==form_size({lg:6, md:6, sm:8})
 			h1.text-center ==lc('actions.user.login')
 
-			form ng-submit="login()"
-				.form-group
+			form ng-submit="login()" name="formLogin"
+				.form-group.has-feedback ng-class="
+					{ 
+						'has-error': 
+							formLogin.email.$dirty && 
+							formLogin.email.$invalid, 
+						'has-success': 
+							formLogin.email.$dirty && 
+							formLogin.email.$valid
+					}"
 					label for="email" ==lc("activerecord.attributes.user.email")
-					input#email.form-control placeholder==lc("activerecord.attributes.user.email") type="email" ng-model='email'/
 
-				.form-group
+					input#email.form-control placeholder==lc("activerecord.attributes.user.email") type="email" name="email" ng-model='email' required=""/
+
+					span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="
+						{
+							'glyphicon-remove':
+								formLogin.email.$dirty && 
+								formLogin.email.$invalid, 
+							'glyphicon-ok':
+								formLogin.email.$dirty && 
+								formLogin.email.$valid
+						}"
+
+				.form-group.has-feedback ng-class="
+					{
+						'has-error': 
+							formLogin.password.$dirty && 
+							formLogin.password.$invalid, 
+						'has-success': 
+							formLogin.password.$dirty && 
+							formLogin.password.$valid
+					}"
 					label for="password" ==lc("activerecord.attributes.user.password")
-					input#password.form-control placeholder==lc("activerecord.attributes.user.password") type="password" ng-model='password'/
+
+					input#password.form-control placeholder==lc("activerecord.attributes.user.password") name="password" type="password" ng-model='password' required="" ng-minlength="6" ng-maxlength="64"/
+
+					span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="
+						{
+							'glyphicon-remove':
+								formLogin.password.$dirty && 
+								formLogin.password.$invalid, 
+							'glyphicon-ok':
+								formLogin.password.$dirty && 
+								formLogin.password.$valid
+						}"
 
 				.btn-group.pull-right role="group"
-					a.btn.btn-default href="/" ==lc('actions.cansel')
-					button.btn.btn-primary type="submit" ==lc('actions.submit')
+					a.btn.btn-default href="/sign-up" ==lc('actions.user.sign_up')
+
+					button.btn.btn-primary ng-disabled="formLogin.$invalid" type="submit" ==lc('actions.submit')

@@ -2,19 +2,77 @@
 	.well class==form_size({lg:6, md:6, sm:8})
 		h1.text-center ==lc('actions.user.sign_up')
 
-		form ng-submit="signUp()"
-			.form-group
+		form ng-submit="signUp()" name='formSighUp'
+			.form-group.has-feedback ng-class="
+				{ 
+					'has-error': 
+						formSighUp.email.$dirty && 
+						formSighUp.email.$invalid, 
+					'has-success': 
+						formSighUp.email.$dirty && 
+						formSighUp.email.$valid
+				}"
 				label for="email" ==lc("activerecord.attributes.user.email")
-				input#email.form-control placeholder==lc("activerecord.attributes.user.email") type="email" ng-model='email'/
 
-			.form-group
+				input#email.form-control placeholder==lc("activerecord.attributes.user.email") name="email" type="email" ng-model='email' required=""/
+
+				span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="
+					{
+						'glyphicon-remove':
+							formSighUp.email.$dirty && 
+							formSighUp.email.$invalid, 
+						'glyphicon-ok':
+							formSighUp.email.$dirty && 
+							formSighUp.email.$valid
+					}"
+
+			.form-group.has-feedback ng-class="
+				{
+					'has-error': 
+						formSighUp.password.$dirty && 
+						formSighUp.password.$invalid, 
+					'has-success': 
+						formSighUp.password.$dirty && 
+						formSighUp.password.$valid
+				}"
 				label for="password" ==lc("activerecord.attributes.user.password")
-				input#password.form-control placeholder==lc("activerecord.attributes.user.password") type="password" ng-model='password'/
 
-			.form-group
+				input#password.form-control placeholder==lc("activerecord.attributes.user.password") name="password" type="password" ng-model='password' required="" ng-minlength="6" ng-maxlength="64"/
+
+				span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="
+					{
+						'glyphicon-remove':
+							formSighUp.password.$dirty && 
+							formSighUp.password.$invalid, 
+						'glyphicon-ok':
+							formSighUp.password.$dirty && 
+							formSighUp.password.$valid
+					}"
+
+			.form-group.has-feedback ng-class="
+				{
+					'has-error': 
+						formSighUp.password_confirmation.$dirty && 
+						formSighUp.password_confirmation.$invalid, 
+					'has-success': 
+						formSighUp.password_confirmation.$dirty && 
+						formSighUp.password_confirmation.$valid
+				}"
 				label for="password_confirmation" ==lc("activerecord.attributes.user.password_confirmation")
-				input#password_confirmation.form-control placeholder==lc("activerecord.attributes.user.password_confirmation") type="password" ng-model='password_confirmation'/
+
+				input#password_confirmation.form-control placeholder==lc("activerecord.attributes.user.password_confirmation") name="password_confirmation" type="password" ng-model='password_confirmation' required="" ng-minlength="6" ng-maxlength="64"/
+
+				span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="
+					{
+						'glyphicon-remove':
+							formSighUp.password_confirmation.$dirty && 
+							formSighUp.password_confirmation.$invalid, 
+						'glyphicon-ok':
+							formSighUp.password_confirmation.$dirty && 
+							formSighUp.password_confirmation.$valid
+					}"
 
 			.btn-group.pull-right role="group"
 				a.btn.btn-default href="/" ==lc('actions.cansel')
-				button.btn.btn-primary type="submit" ==lc('actions.submit')
+
+				button.btn.btn-primary ng-disabled="formSighUp.$invalid" type="submit" ==lc('actions.submit')
