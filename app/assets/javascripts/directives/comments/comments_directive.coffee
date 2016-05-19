@@ -45,7 +45,7 @@
 							#  Combine comment params and parent object params
 							#
 							params = angular.extend( scope.modelParams, scope.newComment )
-							
+							console.log scope.uploader 
 							#
 							#  Add params for send
 							#
@@ -93,7 +93,7 @@
 							#
 							#  Show errors
 							#
-							notify.showObjectArray response
+							# notify.showObjectArray response
 							return
 					}
 

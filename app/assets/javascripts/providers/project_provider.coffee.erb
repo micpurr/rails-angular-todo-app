@@ -75,12 +75,12 @@
 				#  notify succese message
 				#
 				if action
-					notify.showModelMessage "<%= lc('activerecord.models.project', 'upcase') %>", 
-					"<%= lc('actions.create', 'upcase') %>", 
+					notify.showModelMessage "<%= lc('activerecord.models.project') %>", 
+					"<%= lc('actions.create') %>", 
 					response.name
 				else
-					notify.showModelMessage "<%= lc('activerecord.models.project', 'upcase') %>", 
-					"<%= lc('actions.edit', 'upcase') %>", 
+					notify.showModelMessage "<%= lc('activerecord.models.project') %>", 
+					"<%= lc('actions.edit') %>", 
 					response.name
 
 				#

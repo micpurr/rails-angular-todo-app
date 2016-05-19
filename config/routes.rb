@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 	#
 	#  Root path
 	#
-	root "application#index"
+	root "application#index", anchor: false
 
 	#
 	#  Devise routes
@@ -40,5 +40,5 @@ Rails.application.routes.draw do
 	#
 	#  Root angular path
 	#
-	match '*path' => 'application#index', via: [:get, :post]
+	match '*path' => 'application#index', via: [:get, :post], format: false
 end
