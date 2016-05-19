@@ -23,20 +23,11 @@ class CommentsController < ApplicationController
 			projects.find(params['project_id']).
 			tasks.find(params['task_id']).
 			comments.new(comment_params)
-		logger.debug("/////////////////////////////")
-		logger.debug(@comment.to_json)
-		logger.debug("/////////////////////////////")
 
 		respond_to do |format|
 			if @comment.save
-				logger.debug("/////////////////////////////")
-				logger.debug('this')
-				logger.debug("/////////////////////////////")
 				format.json { render :show, status: :created, location: @comment }
 			else
-				logger.debug("/////////////////////////////")
-				logger.debug(@comment.errors.to_json)
-				logger.debug("/////////////////////////////")
 				format.json { render json: @comment.errors, status: :unprocessable_entity }
 			end
 		end

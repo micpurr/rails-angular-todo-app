@@ -11,29 +11,7 @@ html lang==ENV['DEFAULT_LOCALE']
 		= javascript_include_tag 'application-angular'
 		= csrf_meta_tags
 	body ng-app="TodoList"
-		/ == render 'partials/layouts/nav'
-		.user-holder ng-mouseleave="navShowUserActions = false"
-			.trigger ng-mouseover="navShowUserActions = true" ng-class="{'add-border-radius-right-bottom':navShowUserActions == false}" ng-show='globals.isAuth'
-				span.glyphicon.glyphicon-user aria-hidden="true"
-
-				| {{globals.user.email}}
-
-			.user-actions.animated ng-class="{'flipInX':navShowUserActions == true && globals.isAuth, 'flipOutX':navShowUserActions == false && globals.isAuth}"
-				div ng-hide="globals.user === undefined"
-					a href="profile" 
-						= lc('actions.user.profile')
-
-				div ng-controller='AuthController' ng-hide="globals.user === undefined"
-					a href="" ng-click="logout()"
-						= lc('actions.user.logout')
-
-				div ng-show="globals.user === undefined"
-					a href="login" 
-						= lc('actions.user.login')
-
-				div ng-show="globals.user === undefined"
-					a href="sign-up" 
-						= lc('actions.user.sign_up')
+		== render 'partials/layouts/nav'
 
 		main 
 			.spinner ng-show='showPreloader'

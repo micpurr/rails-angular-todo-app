@@ -10,7 +10,7 @@ en:
     show: 'show'
     delete: "delete"
     submit: "submit"
-    cansel: "cansel"
+    cansel: "cancel"
     select: "select"
     back: "back"
     user:

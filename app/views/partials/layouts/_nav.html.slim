@@ -1,31 +1,22 @@
-nav.navbar.navbar-default
-	.container-fluid
-		.navbar-header
-			button.navbar-toggle.collapsed aria-expanded="false" data-target="#navbar-collapse" data-toggle="collapse" type="button" 
-				span.sr-only Toggle navigation
-				span.icon-bar
-				span.icon-bar
-				span.icon-bar
+.user-holder ng-mouseleave="navShowUserActions = false"
+	.trigger ng-mouseover="navShowUserActions = true" ng-class="{'add-border-radius-right-bottom':navShowUserActions == false}" ng-show='globals.isAuth'
+		span.glyphicon.glyphicon-user aria-hidden="true"
 
-			= link_to ENV['APP_NAME'], '/', class: 'navbar-brand'
+		| {{globals.user.email}}
 
-		#navbar-collapse.collapse.navbar-collapse
-			ul.nav.navbar-nav.navbar-right
-				li.dropdown ng-hide="globals.user === undefined"
-					a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
-						| {{globals.user.email}}
-						span.caret
-					ul.dropdown-menu
-						li
-							= link_to lc('actions.user.profile'), 'profile'
+	.user-actions.animated ng-class="{'flipInX':navShowUserActions == true && globals.isAuth, 'flipOutX':navShowUserActions == false && globals.isAuth}"
+		div ng-hide="globals.user === undefined"
+			a href="profile" 
+				= lc('actions.user.profile')
 
-						li.divider
+		div ng-controller='AuthController' ng-hide="globals.user === undefined"
+			a href="" ng-click="logout()"
+				= lc('actions.user.logout')
 
-						li ng-controller='AuthController' ng-hide="globals.user === undefined"
-							= link_to lc('actions.user.logout'), '', 'ng-click': 'logout()'
+		div ng-show="globals.user === undefined"
+			a href="login" 
+				= lc('actions.user.login')
 
-				li ng-show="globals.user === undefined"
-					= link_to lc('actions.user.login'), 'login'
-
-				li ng-show="globals.user === undefined"
-					= link_to lc('actions.user.sign_up'), 'sign-up'
+		div ng-show="globals.user === undefined"
+			a href="sign-up" 
+				= lc('actions.user.sign_up')

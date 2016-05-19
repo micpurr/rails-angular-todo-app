@@ -17,20 +17,41 @@ class TasksController < ApplicationController
 		project_id = params[:project_id]
 		change_priority = params[:change_priority]
 
+		#
+		#  Find task
+		#
 		task = current_user.projects.find(project_id).tasks.find(task_id)
 
+		#
+		#  get selected priority
+		#
 		if change_priority == 'up'
+			#
+			#  increase priority
+			#
 			task.move_higher
 		elsif change_priority == 'down'
+			#
+			#  decrease priority
+			#
 			task.move_lower
 		else
+			#
+			#  return unprocessable_entity status
+			#
 			respond_to do |format|
 				format.json { render :nothing, status: :unprocessable_entity }
 			end
 		end
 
+		#
+		#  get all tasks of current project
+		#
 		@tasks = current_user.projects.find(project_id).tasks
 
+		#
+		#  return tasks.json
+		#
 		respond_to do |format|
 			format.json { render :change_priority }
 		end
@@ -43,6 +64,9 @@ class TasksController < ApplicationController
 	def create
 		@task = current_user.projects.find(task_params['project_id']).tasks.new(task_params)
 
+		#
+		#  Set dedline for current date if deadline dont set
+		#
 		if @task.deadline.blank?
 			@task.deadline = Date.today
 		end
