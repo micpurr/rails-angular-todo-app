@@ -5,6 +5,7 @@
 #  - ngRoute
 #  - Devise( Gem for auth vith devise )
 #  - template( Gem for create templates for page )
+#  - ngFileUpload ( ngModul for upload files )
 #
 @application = angular.module 'TodoList', [ 
 	'ngRoute'
@@ -29,79 +30,111 @@
 		$rootScope.showPreloader = true
 
 		#
+		#  Set state of first run
+		#
+		firstRun = true
+
+		#
+		#  Create default value for global scope
+		#
+		$rootScope.globals = {}
+
+		#
 		#  Set navigation user action trigger
 		#
 		$rootScope.navShowUserActions = false
 
 		#
-		#  load user from current session 
-		#  from server if exist
+		#  Check before location change
 		#
-		Auth.currentUser().then ((user) ->
+		$rootScope.$on '$locationChangeStart', (event, next, current) ->
 			#
-			#  Tern off preloader
+			#  Current url
 			#
-			$rootScope.showPreloader = false
+			url = $location.path()
 
 			#
-			#  Set user to $rootScope
+			#  Login url
 			#
-			$rootScope.globals = 
-				user: user
-				isAuth: true
-		), (error) ->
-			#
-			#  Tern off preloader
-			#
-			$rootScope.showPreloader = false
+			login_path = '/login'
 
 			#
-			#  Set auth status to false
+			#  Sign up url
 			#
-			$rootScope.globals = isAuth: false
+			sign_up_path = '/sign-up'
 
 			#
-			#  redirect to login page
+			#  Home page url
 			#
-			$location.path '/login'
-		.then ->
-			$rootScope.$on '$locationChangeStart', (event, next, current) ->
+			home_path = '/'
+			
+			#
+			#  Check if first run login user if session exist
+			#
+			if firstRun
 				#
-				#  Current url
+				#  Set flag to false
 				#
-				url = $location.path()
+				firstRun = false
 
 				#
-				#  Login url
+				#  load user from current session 
+				#  from server if exist
 				#
-				login_path = '/login'
-
-				#
-				#  Sign up url
-				#
-				sign_up_path = '/sign-up'
-
-				#
-				#  Redirect to login if user not authenticate
-				#  cheking before every request
-				#
-				if !$rootScope.globals.user and url != login_path and url != sign_up_path
-					notify.show("<%= lc('messages.user.not_login') %>")
+				Auth.currentUser().then ((user) ->
 					#
-					#  Redirect to login page
+					#  Tern off preloader
+					#
+					$rootScope.showPreloader = false
+
+					#
+					#  Set user to $rootScope
+					#
+					$rootScope.globals = 
+						user: user
+						isAuth: true
+
+					#
+					#  redirect to home page afterr success login
+					#
+					$location.path home_path
+				), (error) ->
+					#
+					#  Tern off preloader
+					#
+					$rootScope.showPreloader = false
+
+					#
+					#  Set auth status to false
+					#
+					$rootScope.globals = isAuth: false
+
+					#
+					#  redirect to login page
 					#
 					$location.path login_path
 
+			#
+			#  Redirect to login if user not authenticate
+			#  cheking before every request
+			#
+			if !$rootScope.globals.user and url != login_path and url != sign_up_path
+				notify.show "<%= lc('messages.user.not_login') %>"
+				#
+				#  Redirect to login page
+				#
+				$location.path login_path
+
+			#
+			#  Redirect to home page
+			#  if user is authenticate
+			#  and try to go to login or sign-up page
+			#
+			if $rootScope.globals.user and ( url == sign_up_path or url == login_path )
+				notify.show "<%= lc('messages.user.already_login') %>"
+
 				#
 				#  Redirect to home page
-				#  if user is authenticate
-				#  and try to go to login or sign-up page
 				#
-				if $rootScope.globals.user and ( url == sign_up_path or url == login_path )
-					notify.show("<%= lc('messages.user.already_login') %>")
-
-					#
-					#  Redirect to home page
-					#
-					$location.path '/'
+				$location.path home_path
 ]
