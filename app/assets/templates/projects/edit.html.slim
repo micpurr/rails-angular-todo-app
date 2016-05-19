@@ -1,13 +1,17 @@
 .container
 	.row
 		.well class==form_size
-			form ng-submit='Project.saveOrUpdate(isNew, project)'
+			form ng-submit='Project.saveOrUpdate(isNew, project)' name="formNewEditProject"
 				h1.text-center == "{{ action }} " + lc("activerecord.models.project")
 
-				.form-group
+				.form-group.has-feedback ng-class="{'has-error': formNewEditProject.$dirty && formNewEditProject.$invalid, 'has-success': formNewEditProject.$valid}"
 					label for="name" ==lc("activerecord.attributes.project.name")
-					input#name.form-control placeholder==lc("activerecord.attributes.project.name") type="text" ng-model='project.name'/
+
+					input#name.form-control placeholder==lc("activerecord.attributes.project.name") type="text" ng-model='project.name' required="" ng-minlength="2" ng-maxlength="255"/
+
+					span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="{'glyphicon-remove':formNewEditProject.$dirty && formNewEditProject.$invalid, 'glyphicon-ok':formNewEditProject.$dirty && formNewEditProject.$valid}" 
 				
 				.btn-group.pull-right role="group"
 					a.btn.btn-default href="/" ==lc('actions.cansel')
-					button.btn.btn-primary type="submit" ==lc('actions.submit')
+
+					button.btn.btn-primary ng-disabled="formNewEditProject.$invalid" type="submit" ==lc('actions.submit')

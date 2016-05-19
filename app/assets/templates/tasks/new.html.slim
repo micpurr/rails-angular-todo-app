@@ -1,6 +1,6 @@
 .panel-new-task ng-class="{'add-border-radius': model.tasks.length == 0}"
 	form ng-submit='Task.create(modelScope, model)' name='formNewTask'
-		.input-group ng-class="{'has-error': formNewTask.name.$dirty && (formNewTask.name.$error.required || formNewTask.name.$error.minlength || formNewTask.name.$error.maxlength)}"
+		.input-group ng-class="{'has-error': formNewTask.$dirty && formNewTask.$invalid, 'has-success': formNewTask.$valid}"
 			span.input-group-btn
 				a.btn.text-success 
 					span.glyphicon.glyphicon-plus aria-hidden="true" pickadate="" pickadate-model="model.newTask" pickadate-new-position=".panel-new-task"

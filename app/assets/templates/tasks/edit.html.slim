@@ -1,15 +1,19 @@
 .container
 	.row
 		.well class==form_size
-			form ng-submit='Task.update(task)'
+			form ng-submit='Task.update(task)' name='formEditTask'
 				h1.text-center == lc('actions.edit') + " " + lc("activerecord.models.task")
 
-				.form-group
+				.form-group.has-feedback ng-class="{'has-error': formEditTask.$dirty && formEditTask.$invalid, 'has-success': formEditTask.$valid}"
 					label for="name" ==lc("activerecord.attributes.task.name")
-					input#name.form-control placeholder==lc("activerecord.attributes.task.name") type="text" ng-model='task.name'/
+
+					input#name.form-control placeholder==lc("activerecord.attributes.task.name") type="text" ng-model='task.name' required="" ng-minlength="2" ng-maxlength="255"/
+
+					span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="{'glyphicon-remove':formEditTask.$dirty && formEditTask.$invalid, 'glyphicon-ok':formEditTask.$dirty && formEditTask.$valid}" 
 
 				.form-group
 					label for="deadline" ==lc("activerecord.attributes.task.deadline")
+
 					input#deadline.form-control placeholder==lc("activerecord.attributes.task.deadline") type="datetime" pickadate="task" pickadate-model="task"/
 
 				.form-group
@@ -21,4 +25,5 @@
 
 				.btn-group.pull-right role="group"
 					a.btn.btn-default href="/" ==lc('actions.cansel')
-					button.btn.btn-primary type="submit" ==lc('actions.submit')
+
+					button.btn.btn-primary ng-disabled="formEditTask.$invalid" type="submit" ==lc('actions.submit')
