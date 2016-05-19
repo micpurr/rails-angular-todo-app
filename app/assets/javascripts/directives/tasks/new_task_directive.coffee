@@ -30,7 +30,7 @@
 					scope.model.newTask = {}
 				post: (scope) ->
 					#
-					#  Reset form steta after submit
+					#  Reset form state after submit
 					#
 					scope.resetForm = ->
 						scope.formNewTask.$setPristine()

@@ -19,29 +19,24 @@ class CommentsController < ApplicationController
 	#  POST /api/comments.json
 	#
 	def create
-		if params[:file].present?
-			@comment = current_user.
-				projects.find(params['project_id']).
-				tasks.find(params['task_id']).
-				comments.new({ 
-					title: params[:title], 
-					comment: params[:comment], 
-					file: params[:file]
-				})
-		else
-			@comment = current_user.
-				projects.find(params['project_id']).
-				tasks.find(params['task_id']).
-				comments.new({ 
-					title: params[:comment][:title], 
-					comment: params[:comment][:comment], 
-				})
-		end
+		@comment = current_user.
+			projects.find(params['project_id']).
+			tasks.find(params['task_id']).
+			comments.new(comment_params)
+		logger.debug("/////////////////////////////")
+		logger.debug(@comment.to_json)
+		logger.debug("/////////////////////////////")
 
 		respond_to do |format|
 			if @comment.save
+				logger.debug("/////////////////////////////")
+				logger.debug('this')
+				logger.debug("/////////////////////////////")
 				format.json { render :show, status: :created, location: @comment }
 			else
+				logger.debug("/////////////////////////////")
+				logger.debug(@comment.errors.to_json)
+				logger.debug("/////////////////////////////")
 				format.json { render json: @comment.errors, status: :unprocessable_entity }
 			end
 		end
@@ -61,4 +56,10 @@ class CommentsController < ApplicationController
 			format.json { head :no_content }
 		end
 	end
+
+	private
+		# Never trust parameters from the scary internet, only allow the white list through.
+		def comment_params
+			params.require(:comment).permit(:title, :comment, :file)
+		end
 end

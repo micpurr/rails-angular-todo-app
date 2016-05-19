@@ -6,7 +6,8 @@
 	'Comment'
 	'Helpers'
 	'notify'
-	($rootScope, Comment, Helpers, notify) ->
+	'Upload'
+	($rootScope, Comment, Helpers, notify, Upload) ->
 		#
 		#  Comments holder
 		#
@@ -23,7 +24,7 @@
 		#  
 		#  return: null
 		#  
-		comment.create = (scopeTask, comment, uploader) ->
+		comment.create = (scopeTask, comment) ->
 			#
 			#  success collback
 			#
@@ -34,7 +35,7 @@
 				#
 				#  Add comment to scope
 				#
-				scopeTask.comments.push response
+				scopeTask.comments.push response.data
 				return
 
 			#
@@ -45,12 +46,24 @@
 				return
 
 			#
+			#  Create empty object if user don set enithing
+			#
+			if comment is undefined
+				comment = 
+					comment: 
+						title: ''
+						comment: ''
+
+			#
 			#  POST request for create users comment for task
 			#
-			Comment.save {
-				project_id: scopeTask.project_id
-				task_id: scopeTask.id
-			}, { comment: comment }, success, error
+			Upload.upload(
+				url: '/api/comments'
+				data: 
+					task_id: scopeTask.id
+					project_id: scopeTask.project_id
+					comment: comment
+			).then success, error
 			return
 
 		#
@@ -91,7 +104,6 @@
 				task_id: scopeTask.id
 				id: comment.id
 			}, success, error
-
 			return
 
 		#

@@ -7,6 +7,8 @@
 //= require angular-rails-templates
 //= require angular-devise
 //= require angularjs-file-upload
+//= require ng-file-upload
+//= require ng-file-upload-shim
 
 #
 #  Configs

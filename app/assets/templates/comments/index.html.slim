@@ -2,23 +2,60 @@
 	h1.text-center ==lc('activerecord.models.comment').pluralize
 
 	.well class==form_size
-		form ng-submit='createComment()'
+		form ng-submit='createComment()' name='formNewComment'
 			h3.text-center
 				== lc('actions.new') + " " + lc('activerecord.models.comment')
 
-			.form-group
+			.form-group.has-feedback ng-class="
+				{ 
+					'has-error': 
+						formNewComment.title.$dirty && 
+						formNewComment.title.$invalid, 
+					'has-success': 
+						formNewComment.title.$dirty && 
+						formNewComment.title.$valid
+				}"
 				label for="title" ==lc("activerecord.attributes.comment.title")
-				input#title.form-control placeholder==lc("activerecord.attributes.comment.title") type="text" ng-model='newComment.title'/
 
-			.form-group
+				input#title.form-control placeholder==lc("activerecord.attributes.comment.title") type="text" name='title' ng-model='newComment.title' required=""/
+				span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="
+					{
+						'glyphicon-remove':
+							formNewComment.title.$dirty && 
+							formNewComment.title.$invalid, 
+						'glyphicon-ok':
+							formNewComment.title.$dirty && 
+							formNewComment.title.$valid
+					}"
+
+			.form-group.has-feedback ng-class="
+				{ 
+					'has-error': 
+						formNewComment.comment.$dirty && 
+						formNewComment.comment.$invalid, 
+					'has-success': 
+						formNewComment.comment.$dirty && 
+						formNewComment.comment.$valid
+				}"
 				label for="comment" ==lc("activerecord.attributes.comment.comment")
-				textarea#comment class="form-control" rows="3" placeholder==lc("activerecord.attributes.comment.comment") ng-model='newComment.comment'
+
+				textarea#comment class="form-control" name='comment' rows="3" placeholder==lc("activerecord.attributes.comment.comment") ng-model='newComment.comment' required=""
+				span class="glyphicon form-control-feedback" aria-hidden="true" ng-class="
+					{
+						'glyphicon-remove':
+							formNewComment.comment.$dirty && 
+							formNewComment.comment.$invalid, 
+						'glyphicon-ok':
+							formNewComment.comment.$dirty && 
+							formNewComment.comment.$valid
+					}"
 
 			.form-group
-				input#file type="file" nv-file-select="" uploader="uploader"/
+				input type="file" ngf-select='' ng-model="newComment.file" name="file" ngf-max-size="20MB"
 
 			.btn-group.pull-right role="group"
 				a.btn.btn-default href="/" ==lc('actions.cansel')
-				button.btn.btn-primary type="submit" ==lc('actions.submit')
+
+				button.btn.btn-primary ng-click="resetForm()" ng-disabled="formNewComment.$invalid" type="submit" ==lc('actions.submit')
 
 render-comments parent-model="model"

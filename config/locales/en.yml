@@ -11,6 +11,7 @@ en:
     delete: "delete"
     submit: "submit"
     cansel: "cansel"
+    select: "select"
     user:
       profile: "profile"
       login: "login"
