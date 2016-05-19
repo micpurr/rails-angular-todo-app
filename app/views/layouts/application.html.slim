@@ -13,7 +13,7 @@ html lang==ENV['DEFAULT_LOCALE']
 	body ng-app="TodoList"
 		/ == render 'partials/layouts/nav'
 		.user-holder ng-mouseleave="navShowUserActions = false"
-			.trigger ng-mouseover="navShowUserActions = true" ng-class="{'add-border-radius-left-bottom':navShowUserActions == false}" ng-show='globals.isAuth'
+			.trigger ng-mouseover="navShowUserActions = true" ng-class="{'add-border-radius-right-bottom':navShowUserActions == false}" ng-show='globals.isAuth'
 				span.glyphicon.glyphicon-user aria-hidden="true"
 
 				| {{globals.user.email}}

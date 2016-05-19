@@ -12,6 +12,6 @@
 
 .btn-group {
 	& > .btn {
-		min-width: min-btn-width-in-group;
+		min-width: $min-btn-width-in-group;
 	}
 }

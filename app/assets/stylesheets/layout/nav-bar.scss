@@ -1,5 +1,6 @@
 .user-holder{
 	position: fixed;
+	z-index: 9999;
 	min-width: 100px;
 	max-width: 200px;
 	left: 0;
@@ -8,13 +9,15 @@
 
 	.user-actions, .trigger {
 		background-color: $brand-primary;
+			border-right: $border-user-actions;
+		border-bottom: $border-user-actions;
 	}
 
 	& > .user-actions{
 		border-radius: 0 0 $border-radius-user-action 0;
 		color: inherit;
 		padding: 10px;
-		
+
 		div{
 			margin-bottom: 10px;
 		}
@@ -41,6 +44,6 @@
 	}
 }
 
-.add-border-radius-left-bottom{
+.add-border-radius-right-bottom{
 	border-radius: 0 0 $border-radius-user-action 0;
 }
