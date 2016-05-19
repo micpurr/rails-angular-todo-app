@@ -12,6 +12,7 @@ en:
     submit: "submit"
     cansel: "cansel"
     select: "select"
+    back: "back"
     user:
       profile: "profile"
       login: "login"
