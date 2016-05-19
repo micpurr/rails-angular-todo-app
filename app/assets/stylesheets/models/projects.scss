@@ -1,0 +1,64 @@
+.panel-project {
+	.panel{
+		border-radius: 0 0 $project-border-radius $project-border-radius;
+		margin-bottom: $home-page-component-margin-bottom;
+	}
+
+	.panel-primary{
+		border-color: $project-border-color;
+		
+		& > .panel-heading{
+			border-radius: 0;
+			font-size: 18px;
+			padding: 15px;
+			cursor: pointer;
+
+			& > span.calendar{
+				font-size: 23px;
+				margin-right: $icon-margin-side;
+				color: $text-black;
+				vertical-align: text-bottom;
+			}
+		}
+	}
+
+	.panel-new-task {
+		background-color: $panel-new-task-bg-color;
+		padding: 10px;
+
+		& a.btn{
+			padding: 0 15px 0 5px;
+			font-size: 23px;
+		}
+	}
+}
+
+.add-new-project-btn{
+	text-align: center;
+
+	& > a {
+		border-radius: 0;
+
+		& > span{
+		margin-right: $icon-margin-side;
+		}
+	}
+}
+
+.add-border-radius {
+	border-radius: 0 0 $project-border-radius $project-border-radius;
+}
+
+.project-actions{
+	& > a:before{
+		margin-right: 0;
+		margin-left: 0;
+		content: '';
+	}
+	& > a:first-child:after{
+		margin-right: $margin-content-after;
+		margin-left: $margin-content-after;
+		content: '|';
+		vertical-align: text-bottom;
+	}
+}

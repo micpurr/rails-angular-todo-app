@@ -1,4 +1,7 @@
 en:
+  application:
+    name: "Simple ToDo List"
+    desc: "Powered by Ruby on Rails & AngularJS"
   actions:
     create: "create"
     edit: "edit"

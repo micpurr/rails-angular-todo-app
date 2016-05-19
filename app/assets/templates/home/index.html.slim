@@ -1,3 +1,14 @@
+.application-info
+	h1.text-center 
+		== lc('application.name', 'titleize')
+	h3.text-center
+		== lc('application.desc', 'upcase')
+	div.icons.clearfix
+		.rails
+		.divider
+			span class="glyphicon glyphicon-plus" aria-hidden="true"
+		.angular
+
 .container
 	.row
 		div.panel-project class==form_size
@@ -7,7 +18,7 @@
 
 					| {{ project.name }}
 
-					.actions.pull-right ng-show='isHoverProjectName'
+					.actions.pull-right.project-actions ng-show='isHoverProjectName'
 						a href='projects/{{ project.id }}/edit'
 							span.glyphicon.glyphicon-pencil aria-hidden="true"
 							
@@ -19,6 +30,6 @@
 				tasks parent-model="project" parent-model-scope='projects'
 
 			.add-new-project-btn
-				a.btn.btn-primary href='projects/new'
+				a.btn.btn-primary.btn-lg href='projects/new'
 					span.glyphicon.glyphicon-plus aria-hidden="true"
 					== lc("actions.add") + " " + lc("activerecord.models.project")
