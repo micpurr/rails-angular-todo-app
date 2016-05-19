@@ -1,12 +1,12 @@
 .panel-new-task ng-class="{'add-border-radius': model.tasks.length == 0}"
-	form ng-submit='Task.create(modelScope, model)'
-		.input-group
+	form ng-submit='Task.create(modelScope, model)' name='formNewTask'
+		.input-group ng-class="{'has-error': formNewTask.name.$dirty && (formNewTask.name.$error.required || formNewTask.name.$error.minlength || formNewTask.name.$error.maxlength)}"
 			span.input-group-btn
 				a.btn.text-success 
 					span.glyphicon.glyphicon-plus aria-hidden="true" pickadate="" pickadate-model="model.newTask" pickadate-new-position=".panel-new-task"
 
-			input.form-control ng-model="model.newTask.name" placeholder==lc('messages.forms.models.task.new_task_input') type="text" /
+			input.form-control name='name' ng-model="model.newTask.name" placeholder==lc('messages.forms.models.task.new_task_input') type="text" required="" ng-minlength="2" ng-maxlength="255"/
 
 			span.input-group-btn
-				button.btn.btn-success type="submit"
+				button.btn.btn-success ng-click="resetForm()" type="submit" ng-disabled="formNewTask.$invalid"
 					== lc('actions.add') + " " + lc('activerecord.models.task')

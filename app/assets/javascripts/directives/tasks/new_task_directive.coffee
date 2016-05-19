@@ -28,5 +28,11 @@
 					#  Create default object of new task
 					#
 					scope.model.newTask = {}
+				post: (scope) ->
+					#
+					#  Reset form steta after submit
+					#
+					scope.resetForm = ->
+						scope.formNewTask.$setPristine()
 		}
 ]
