@@ -93,4 +93,3 @@ RSpec.feature 'authenticate', :js => true do
 		expect(page).to have_content('has already been taken')
 	end
 end
-# save_and_open_screenshot

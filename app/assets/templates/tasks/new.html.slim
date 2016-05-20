@@ -5,7 +5,7 @@
 				a.btn.text-success 
 					span.glyphicon.glyphicon-plus aria-hidden="true" pickadate="" pickadate-model="model.newTask" pickadate-new-position=".panel-new-task"
 
-			input.form-control name='name' ng-model="model.newTask.name" placeholder==lc('messages.forms.models.task.new_task_input') type="text" required="" ng-minlength="2" ng-maxlength="255"/
+			input.form-control.new-task-input name='name' ng-model="model.newTask.name" placeholder==lc('messages.forms.models.task.new_task_input') type="text" required="" ng-minlength="2" ng-maxlength="255"/
 
 			span.input-group-btn
 				button.btn.btn-success ng-click="resetForm()" type="submit" ng-disabled="formNewTask.$invalid"

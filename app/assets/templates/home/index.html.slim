@@ -19,7 +19,7 @@
 					| {{ project.name }}
 
 					.actions.pull-right.project-actions ng-show='isHoverProjectName'
-						a href='projects/{{ project.id }}/edit'
+						a.edit-project href='projects/{{ project.id }}/edit'
 							span.glyphicon.glyphicon-pencil aria-hidden="true"
 							
 						a ng-click='Project.remove(projects, project)' href=''
@@ -30,6 +30,6 @@
 				tasks parent-model="project" parent-model-scope='projects'
 
 			.add-new-project-btn
-				a.btn.btn-primary.btn-lg href='projects/new'
+				a.btn.btn-primary.btn-lg.new-project href='projects/new'
 					span.glyphicon.glyphicon-plus aria-hidden="true"
 					== lc("actions.add") + " " + lc("activerecord.models.project")

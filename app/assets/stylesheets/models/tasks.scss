@@ -42,10 +42,21 @@ td {
 			background: rgba(#F1F41B, .1);
 		}
 
+		&:last-child {
+			&> td:first-child{
+				border-bottom-left-radius: $project-border-radius !important;
+			}
+
+			&> td:last-child{
+				border-bottom-right-radius: $project-border-radius !important;
+			}
+		}
+
 		& > td {
 			&.actions{
 				padding: 11px 15px;
 			}
+
 
 			color: $table-task-text-color;
 			padding: 15px;

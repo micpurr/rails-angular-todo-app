@@ -15,21 +15,21 @@
 					input type="checkbox" ng-model="task.done" ng-click="Task.toggleDone(task)"
 
 				td
-					a.show href='/projects/{{model.id}}/tasks/{{task.id}}'
+					a.show.show-task href='/projects/{{model.id}}/tasks/{{task.id}}'
 						| {{ task.name }}
 
 				td.actions
 					.btn-group-vertical.icon-group
-						a ng-click='Task.changePriority(model, task, "up")' href='' ng-show='isHoverTask'
+						a.change-priority-up ng-click='Task.changePriority(model, task, "up")' href='' ng-show='isHoverTask'
 							span.glyphicon.glyphicon-triangle-top aria-hidden="true"
 
 						hr ng-show='isHoverTask'
 
-						a ng-click='Task.changePriority(model, task, "down")' href='' ng-show='isHoverTask'
+						a.change-priority-down ng-click='Task.changePriority(model, task, "down")' href='' ng-show='isHoverTask'
 							span.glyphicon.glyphicon-triangle-bottom aria-hidden="true"
 
-					a href="projects/{{ model.id }}/tasks/{{ task.id }}/edit" ng-show='isHoverTask'
+					a.edit-task href="projects/{{ model.id }}/tasks/{{ task.id }}/edit" ng-show='isHoverTask'
 						span.glyphicon.glyphicon-pencil aria-hidden="true"
 
-					a ng-click='Task.remove(modelScope, task)' href='' ng-show='isHoverTask'
+					a.remove-task ng-click='Task.remove(modelScope, task)' href='' ng-show='isHoverTask'
 						span.glyphicon.glyphicon-trash aria-hidden="true"
