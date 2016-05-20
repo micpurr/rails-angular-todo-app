@@ -8,8 +8,6 @@ RSpec.describe Api::V1::ProjectsController, type: :controller do
 		sign_in @user
 	end
 
-	render_views
-
 	let(:valid_attributes) {
 		{ name: Faker::Lorem.sentence, user_id: @user.id }
 	}

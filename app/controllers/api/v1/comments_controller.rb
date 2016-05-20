@@ -1,19 +1,4 @@
 class Api::V1::CommentsController < Api::V1::V1Controller
-
-	#
-	#  Get all comments
-	#  GET /api/comments.json
-	#
-	def index
-		@comments = current_user.
-			projects.find(params[:project_id]).
-			tasks.find(params[:task_id]).comments
-
-		respond_to do |format|
-			format.json { render :index }
-		end
-	end
-
 	#
 	#  Create comment
 	#  POST /api/comments.json
