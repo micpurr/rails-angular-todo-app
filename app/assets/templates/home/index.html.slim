@@ -22,7 +22,7 @@
 						a.edit-project href='projects/{{ project.id }}/edit'
 							span.glyphicon.glyphicon-pencil aria-hidden="true"
 							
-						a ng-click='Project.remove(projects, project)' href=''
+						a.remove-project ng-click='Project.remove(projects, project)' href=''
 							span.glyphicon.glyphicon-trash aria-hidden="true"
 
 				new-task parent-model="project" parent-model-scope='projects'
