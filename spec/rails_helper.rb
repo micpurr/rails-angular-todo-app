@@ -34,27 +34,15 @@ RSpec.configure do |config|
 	config.include Capybara::Angular::DSL
 	include ApplicationHelper
 	config.render_views = true
-	# Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-	# config.fixture_path = "#{::Rails.root}/spec/fixtures"
-
-	# If you're not using ActiveRecord, or you'd prefer not to run each of your
-	# examples within a transaction, remove the following line or assign false
-	# instead of true.
-	# config.use_transactional_fixtures = true
-
-	# config.include FactoryGirl::Syntax::Methods
-
-	# config.before(:suite) do
-	# 	begin
-	# 		DatabaseCleaner.start
-	# 		# Test factories in spec/factories are working.
-	# 		# FactoryGirl.lint
-	# 	ensure
-	# 		DatabaseCleaner.clean
-	# 	end
-	# end
 
 	# Capybara.current_driver = :webkit
+
+	Shoulda::Matchers.configure do |config|
+		config.integrate do |with|
+			with.test_framework :rspec
+			with.library :rails
+		end
+	end
 
 	config.before do
 		DatabaseCleaner.strategy = :transaction

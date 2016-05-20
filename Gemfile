@@ -87,10 +87,11 @@ group :test do
 	# => Capybara
 	gem 'capybara'
 	# => Gem for adding random template data with testing
-	gem 'factory_girl_rails'
+	# gem 'factory_girl_rails'
 	# => DB cleaner on testing
 	gem 'database_cleaner'
 
+	gem 'shoulda-matchers'
 	gem 'capybara-angular'
 end
 
