@@ -4,7 +4,7 @@
 @application.factory 'Project', [
 	'$resource'
 	($resource) ->
-		$resource '/api/projects/:id', 
+		$resource '/api/v1/projects/:id', 
 			{ id: '@id' }, 
 			'update': 
 				method: 'PUT'

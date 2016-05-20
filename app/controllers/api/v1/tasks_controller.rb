@@ -1,4 +1,4 @@
-class TasksController < SecureController
+class Api::V1::TasksController < Api::V1::V1Controller
 	before_action :set_task, only: [:show, :update, :destroy]
 
 	#  
@@ -75,7 +75,7 @@ class TasksController < SecureController
 
 		respond_to do |format|
 			if @task.save
-				format.json { render :show, status: :created, location: @task }
+				format.json { render :show, status: :created }
 			else
 				format.json { render json: @task.errors, status: :unprocessable_entity }
 			end
@@ -89,7 +89,7 @@ class TasksController < SecureController
 	def update
 		respond_to do |format|
 			if @task.update(task_params)
-				format.json { render :show, status: :ok, location: @task }
+				format.json { render :show, status: :ok }
 			else
 				format.json { render json: @task.errors, status: :unprocessable_entity }
 			end

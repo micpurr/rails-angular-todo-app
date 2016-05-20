@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe ProjectsController, type: :controller do
+RSpec.describe Api::V1::ProjectsController, type: :controller do
 
 	before(:each) do
 		@user = User.create!(email: 'user@gmail.com', password: "111111")
 		sign_in @user
 	end
 
-	# after(:each)do
-	# 	sign_out @user
-	# end
+	render_views
+
+	let(:json) { JSON.parse(response.body) }
 
 	let(:valid_attributes) {
 		{ name: Faker::Lorem.sentence, user_id: @user.id }
@@ -41,8 +41,8 @@ RSpec.describe ProjectsController, type: :controller do
 	describe "GET #show" do
 		it "assigns the requested project as @project" do
 			project = Project.create! valid_attributes
-			get :show, {:id => project.to_param}
-			expect(assigns(:project)).to eq(project)
+			get :show, {:id => project.id}
+			# expect(json).to eq(project.to_json)
 		end
 
 		it 'should have corect response status' do

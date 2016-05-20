@@ -1,4 +1,4 @@
-class CommentsController < SecureController
+class Api::V1::CommentsController < Api::V1::V1Controller
 
 	#
 	#  Get all comments
@@ -26,7 +26,7 @@ class CommentsController < SecureController
 
 		respond_to do |format|
 			if @comment.save
-				format.json { render :show, status: :created, location: @comment }
+				format.json { render :show, status: :created }
 			else
 				format.json { render json: @comment.errors, status: :unprocessable_entity }
 			end

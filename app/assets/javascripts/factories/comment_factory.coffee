@@ -4,6 +4,6 @@
 @application.factory 'Comment', [
 	'$resource'
 	($resource) ->
-		$resource '/api/comments/:id', 
+		$resource '/api/v1/comments/:id', 
 			{ id: '@id' }
 ]

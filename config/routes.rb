@@ -1,30 +1,35 @@
 Rails.application.routes.draw do
 	#
-	#  API scope fore isolate url
+	#  API namespace
 	#
-	scope 'api' do
+	namespace 'api' do
 		#
-		#  project resource
+		#  Isolate version
 		#
-		resources :projects, 
-			defaults: {format: :json}, 
-			except: [:new, :edit] 
+		namespace 'v1' do
+			#
+			#  project resource
+			#
+			resources :projects, 
+				defaults: {format: :json}, 
+				except: [:new, :edit] 
 
-		#
-		#  task resource
-		#
-		resources :tasks, 
-			defaults: {format: :json}, 
-			except: [:new, :edit, :index] do
-			post 'change_priority' => 'tasks#change_priority'
+			#
+			#  task resource
+			#
+			resources :tasks, 
+				defaults: {format: :json}, 
+				except: [:new, :edit, :index] do
+				post 'change_priority' => 'tasks#change_priority'
+			end
+
+			#
+			#  comment resource
+			#
+			resources :comments,
+				defaults: {format: :json}, 
+				only: [:create, :destroy, :index]
 		end
-
-		#
-		#  comment resource
-		#
-		resources :comments,
-			defaults: {format: :json}, 
-			only: [:create, :destroy, :index]
 	end
 
 	#

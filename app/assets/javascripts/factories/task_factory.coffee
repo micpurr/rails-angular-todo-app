@@ -4,7 +4,7 @@
 @application.factory 'Task', [
 	'$resource'
 	($resource) ->
-		$resource '/api/tasks/:id', 
+		$resource '/api/v1/tasks/:id', 
 			{ id: '@id' }, 
 			'update': 
 				method: 'PUT'
@@ -13,12 +13,12 @@
 			#
 			'changePriority':
 				method: "POST"
-				url: '/api/tasks/:id/change_priority'
+				url: '/api/v1/tasks/:id/change_priority'
 				isArray: true
 			#
 			#  Path for get comments
 			#
 			'comments':
 				method: "GET"
-				url: '/api/comments'
+				url: '/api/v1/comments'
 ]

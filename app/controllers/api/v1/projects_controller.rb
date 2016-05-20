@@ -1,4 +1,4 @@
-class ProjectsController < SecureController
+class Api::V1::ProjectsController < Api::V1::V1Controller
 	before_action :set_project, only: [:show, :update, :destroy]
 
 	#
@@ -16,7 +16,6 @@ class ProjectsController < SecureController
 	#  GET /api/projects/1.json
 	#
 	def show
-		render :show
 	end
 
 	# 
@@ -28,7 +27,7 @@ class ProjectsController < SecureController
 
 		respond_to do |format|
 			if @project.save
-				format.json { render :show, status: :created, location: @project }
+				format.json { render :show, status: :created }
 			else
 				format.json { render json: @project.errors, status: :unprocessable_entity }
 			end
@@ -42,7 +41,7 @@ class ProjectsController < SecureController
 	def update
 		respond_to do |format|
 			if @project.update(project_params)
-				format.json { render :show, status: :ok, location: @project }
+				format.json { render :show, status: :ok }
 			else
 				format.json { render json: @project.errors, status: :unprocessable_entity }
 			end
