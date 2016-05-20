@@ -10,7 +10,7 @@
 				= lc('actions.user.profile')
 
 		div ng-controller='AuthController' ng-hide="globals.user === undefined"
-			a href="" ng-click="logout()"
+			a.logout-btn href="" ng-click="logout()"
 				= lc('actions.user.logout')
 
 		div ng-show="globals.user === undefined"
