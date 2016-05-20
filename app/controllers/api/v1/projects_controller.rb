@@ -7,8 +7,6 @@ class Api::V1::ProjectsController < Api::V1::V1Controller
 	#
 	def index
 		@projects = current_user.projects.order("created_at ASC")
-
-		render :index
 	end
 
 	#
