@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 			#
 			resources :comments,
 				defaults: {format: :json}, 
-				only: [:create, :destroy, :index]
+				only: [:create, :destroy]
 		end
 	end
 
