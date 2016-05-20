@@ -86,13 +86,13 @@ end
 group :test do
 	# => Capybara
 	gem 'capybara'
-	# => Gem for adding random template data with testing
-	# gem 'factory_girl_rails'
 	# => DB cleaner on testing
 	gem 'database_cleaner'
-
+	# => PhantomJS driver for Capybara
+	gem 'poltergeist'
+	gem 'phantomjs', :require => 'phantomjs/poltergeist'
+	# => Special machers
 	gem 'shoulda-matchers'
-	gem 'capybara-angular'
 end
 
 group :development do
