@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class ProjectsController < SecureController
 	before_action :set_project, only: [:show, :update, :destroy]
 
 	#
@@ -8,9 +8,7 @@ class ProjectsController < ApplicationController
 	def index
 		@projects = current_user.projects.order("created_at ASC")
 
-		respond_to do |format|
-			format.json { render :index }
-		end
+		render :index
 	end
 
 	#
