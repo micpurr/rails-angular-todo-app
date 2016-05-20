@@ -4,7 +4,7 @@ class Task < ActiveRecord::Base
 	#
 	belongs_to :project
 	acts_as_list scope: :project
-	acts_as_commentable
+	acts_as_commentable dependent: :delete_all
 
 	#
 	#  Methods
