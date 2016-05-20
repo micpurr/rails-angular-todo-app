@@ -24,6 +24,7 @@ en:
         dont_delete: "unknown error on deleting"
         change_priority: "priority was not changed"
         marked: "toggle task dont success"
+        change_priority_error: "unknown priority action"
     task:
       change_priority: 'priority was changed'
       marked: "toggle task success"

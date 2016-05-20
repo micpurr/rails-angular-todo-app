@@ -96,10 +96,6 @@ RSpec.describe Api::V1::ProjectsController, type: :controller do
 
 	describe "PUT #update" do
 		context "with valid params" do
-			let(:new_attributes) {
-				{ name: Faker::Lorem.sentence, user_id: @user.id }
-			}
-
 			it "assigns the requested project as @project" do
 				project = Project.create! valid_attributes
 				put :update, {:id => project.to_param, :project => valid_attributes}

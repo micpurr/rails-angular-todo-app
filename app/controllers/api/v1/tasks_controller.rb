@@ -35,25 +35,23 @@ class Api::V1::TasksController < Api::V1::V1Controller
 			#  decrease priority
 			#
 			task.move_lower
-		else
+		end
+
+		unless change_priority == 'up' || change_priority == 'down'
 			#
 			#  return unprocessable_entity status
 			#
-			respond_to do |format|
-				format.json { render :nothing, status: :unprocessable_entity }
-			end
-		end
+			render json: { errors: lc('messages.record.errors.change_priority_error') }, status: :unprocessable_entity
+		else
+			#
+			#  get all tasks of current project
+			#
+			@tasks = current_user.projects.find(project_id).tasks
 
-		#
-		#  get all tasks of current project
-		#
-		@tasks = current_user.projects.find(project_id).tasks
-
-		#
-		#  return tasks.json
-		#
-		respond_to do |format|
-			format.json { render :change_priority }
+			#
+			#  return tasks.json
+			#
+			render :change_priority
 		end
 	end
 
