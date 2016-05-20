@@ -16,7 +16,7 @@ class ProjectsController < SecureController
 	#  GET /api/projects/1.json
 	#
 	def show
-		
+		render :show
 	end
 
 	# 

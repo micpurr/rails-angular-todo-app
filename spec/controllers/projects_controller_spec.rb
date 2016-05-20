@@ -7,6 +7,10 @@ RSpec.describe ProjectsController, type: :controller do
 		sign_in @user
 	end
 
+	# after(:each)do
+	# 	sign_out @user
+	# end
+
 	let(:valid_attributes) {
 		{ name: Faker::Lorem.sentence, user_id: @user.id }
 	}
@@ -22,31 +26,30 @@ RSpec.describe ProjectsController, type: :controller do
 			expect(assigns(:projects)).to eq([project])
 		end
 
-		it 'should have current response type'do
+		it 'should render index template'do
 			project = Project.create! valid_attributes
 			get :index
-			expect(response.content_type).to eq "application/json"
+			expect(response).to render_template("index")
 		end
 
 		it 'should have corect response status' do
 			get 'index'
 			expect(response).to have_http_status(:success)
 		end
-
-		it "should send unauthorized error" do
-			sign_out @user
-			get :index
-			expect(response).to have_http_status(:unauthorized)
-		end
 	end
 
-	# describe "GET #show" do
-	# 	it "assigns the requested project as @project" do
-	# 		project = Project.create! valid_attributes
-	# 		get :show, {:id => project.to_param}, valid_session
-	# 		expect(assigns(:project)).to eq(project)
-	# 	end
-	# end
+	describe "GET #show" do
+		it "assigns the requested project as @project" do
+			project = Project.create! valid_attributes
+			get :show, {:id => project.to_param}
+			expect(assigns(:project)).to eq(project)
+		end
+
+		it 'should have corect response status' do
+			get 'show'
+			expect(response).to have_http_status(:success)
+		end
+	end
 
 	# describe "GET #edit" do
 	# 	it "assigns the requested project as @project" do
