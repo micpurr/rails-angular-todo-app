@@ -1,9 +1,9 @@
 #Ruby on Rails
 
-##Description
+###Description
 *This is a simple ToDo application powered by Ruby on Rail + AngularJS. You can create project and task for project. For every task user can create comments and attach file to comment. Task can be managed by priority and mark as done. Done task will be green, task which deadline not pass will be red, task wich deadline is today yellow.*
 
-###CORE
+####CORE
  - Ruby on Rails 4.2.6
 	 - [Figaro](https://github.com/laserlemon/figaro)
 	 - [Angular Rails](https://github.com/hiravgandhi/angularjs-rails)
@@ -25,15 +25,16 @@
  - Slim Tamplate
  - SASS
  - CoffeeScript
-###CSS LIBS
+
+####CSS LIBS
  - [AnimateCSS](https://daneden.github.io/animate.css/)
-###JS LIBS
+
+####JS LIBS
 - [SnackbarJS](https://github.com/FezVrasta/snackbarjs/)
 - [PickadateJS](http://amsul.ca/pickadate.js/)
 - [UnderscoreJS](http://underscorejs.org/)
 
-##Functional 
-
+###Functional 
  - Sign in/sign up by email/password
  - Create/update/delete projects
  - Create/update/delete task in project
@@ -43,9 +44,9 @@
  - Create/delete commnets for tasks
  - Attach file to cooment
 
-##Structure
+###Structure
 
-####Angular 
+#####Angular 
 - app/assets/javascripts/ - Core folder
 	 - application.coffee - manifest file for libs
 	 - application-angular.coffee - manifest file for angular
@@ -63,8 +64,7 @@
 		 - helpers_service.coffee - special helpers for manipulate collections
 		 - snackbar_service.coffee - service for using snackbarJS
 
-####API
-
+#####API
 - app/controllers/api/v1/
 	- comments_controller.rb
 	- task_controller.rb
