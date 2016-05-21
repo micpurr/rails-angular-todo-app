@@ -10,8 +10,8 @@ en:
     show: 'show'
     delete: "delete"
     submit: "submit"
-    cansel: "cancel"
     select: "select"
+    cansel: "cancel"
     back: "back"
     user:
       profile: "profile"
