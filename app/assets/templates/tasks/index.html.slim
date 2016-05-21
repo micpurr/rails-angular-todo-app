@@ -4,11 +4,12 @@
 			tr ng-repeat='task in model.tasks' ng-mouseover="isHoverTask = true" ng-mouseleave="isHoverTask = false" ng-class="
 				{
 					'success': 
-						task.done &&
-						task.get_deadline_days_left > 0,
+						task.done,
 					'warning': 
+						!task.done && 
 						task.get_deadline_days_left == 0,
 					'danger':
+						!task.done && 
 						task.get_deadline_days_left < 0
 				}"
 				td.done
