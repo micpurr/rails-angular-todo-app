@@ -8,7 +8,7 @@
 			div ng-show="comment.get_file.url != undefined"
 				h4 
 					==lc("activerecord.attributes.comment.file") + ": "
-					a href="{{comment.get_file.url}}" {{comment.get_file.file_name}}
+					a target="_self" href="{{comment.get_file.url}}" {{comment.get_file.file_name}}
 			.comment-actions
 				a.remove-comment href="" ng-click="Comment.remove(model, comment)"
 					span.glyphicon.glyphicon-remove.text-danger aria-hidden="true"
