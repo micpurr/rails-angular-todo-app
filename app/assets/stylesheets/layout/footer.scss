@@ -8,5 +8,22 @@ footer{
 		span {
 			margin-right: $icon-margin-side;
 		}
+
+		img{
+			vertical-align: bottom;
+			margin-right: $icon-margin-side;
+			height: 32px;
+			width: 32px;
+		}
+
+		a {
+			color: $text-black;
+			text-decoration: none;
+		}
+
+		a:hover {
+			color: lighten($text-black, 5%);
+			text-decoration: none;
+		}
 	}
 }
