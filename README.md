@@ -93,6 +93,7 @@
 	rake db:migrate
 
 *Only dev and test*
+
 	rake db:seed
 
 *Will generate 2 with random project, tasks and comments*
